@@ -29,9 +29,9 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
   }
 
   private _getHtmlForWebview(webview: vscode.Webview) {
-    // const scriptUri = webview.asWebviewUri(
-    //   vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.js")
-    // );
+    const webviewUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "dist", "webview.js")
+    );
     // const styleMainUri = webview.asWebviewUri(
     //   vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.css")
     // );
@@ -52,13 +52,17 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
     }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				
-        <script nonce="${nonce}">
-        </script>
+        
 			</head>
       <body>
         <div id="app">
           Hello world
         </div>
+        <script nonce="${nonce}" src="${webviewUri}">
+        </script>
+        <script nonce="${nonce}">
+        console.log("say what");
+        </script>
 			</body>
 			</html>`;
   }
