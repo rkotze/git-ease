@@ -3,6 +3,7 @@
 "use strict";
 
 const path = require("path");
+const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const webview = {
   target: "web",
@@ -20,6 +21,11 @@ const webview = {
   resolve: {
     extensions: [".ts", ".js"],
   },
+  plugins: [
+    new miniCssExtractPlugin({
+      filename: "webview.css",
+    }),
+  ],
   module: {
     rules: [
       {
@@ -30,6 +36,11 @@ const webview = {
             loader: "ts-loader",
           },
         ],
+      },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: [miniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },

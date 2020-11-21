@@ -32,11 +32,10 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
     const webviewUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "dist", "webview.js")
     );
-    // const styleMainUri = webview.asWebviewUri(
-    //   vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.css")
-    // );
+    const styleMainUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "dist", "webview.css")
+    );
 
-    // Use a nonce to only allow a specific script to be run.
     const nonce = getNonce();
 
     return `<!DOCTYPE html>
@@ -51,7 +50,7 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
       webview.cspSource
     }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				
+				<link href="${styleMainUri}" rel="stylesheet">
         
 			</head>
       <body>
@@ -59,9 +58,6 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
           Hello world
         </div>
         <script nonce="${nonce}" src="${webviewUri}">
-        </script>
-        <script nonce="${nonce}">
-        console.log("say what");
         </script>
 			</body>
 			</html>`;
