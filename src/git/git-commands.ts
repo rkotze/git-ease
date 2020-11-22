@@ -1,7 +1,7 @@
 // https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 // git log --abbrev-commit --name-status
 
-import { exec } from "child_process";
+import { exec, ExecOptionsWithStringEncoding } from "child_process";
 import { promisify } from "util";
 import { workspace } from "vscode";
 
@@ -17,10 +17,11 @@ async function silentExec(command: string) {
   }
 }
 
-function cmdOptions() {
-  const path = workspace.workspaceFolders || [{ name: "" }];
+function cmdOptions(): ExecOptionsWithStringEncoding {
+  const path = workspace.workspaceFolders || [{ uri: { fsPath: "" } }];
   return {
-    cwd: path[0].name,
+    encoding: "utf8",
+    cwd: path[0].uri.fsPath,
   };
 }
 
