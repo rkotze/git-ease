@@ -55,7 +55,7 @@ function cleanCommitSplit(commit: string) {
     .map((txt) => txt.trim());
 }
 
-export async function commitList(commitLog: string): Promise<Commit[]> {
+export function commitList(commitLog: string): Commit[] {
   const commitList = commitLog.split("commit ");
   commitList.shift();
 

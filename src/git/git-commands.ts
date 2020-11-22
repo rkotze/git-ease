@@ -3,7 +3,7 @@
 
 import { exec } from "child_process";
 import { promisify } from "util";
-import {workspace} from "vscode";
+import { workspace } from "vscode";
 
 async function silentExec(command: string) {
   const execAsync = promisify(exec);
@@ -24,6 +24,6 @@ function cmdOptions() {
   };
 }
 
-export async function history() {
+export async function history(): Promise<string> {
   return silentExec("git log --abbrev-commit");
 }
