@@ -1,14 +1,23 @@
 import { commitList } from "./commit-list";
 
+describe("Commit list", () => {
+  let list: Commit[] = [];
 
-test("Commit list", async () => {
-  const list = await commitList(commitLog);
-  expect(list).toHaveLength(3);
-  expect(list[0]).toMatchObject({
-    hash: "a19fe9a (HEAD -> trunk, origin/trunk)",
-    title: "Build light and dark vs code styles webpack",
-    date: new Date("Sat Nov 21 21:38:19 2020 +0000"),
-    author: "Random Bob <random.bob@example.com>"
+  beforeAll(async () => {
+    list = await commitList(commitLog);
+  });
+
+  test("should have three commits", () => {
+    expect(list).toHaveLength(3);
+  });
+
+  test("build commit object", () => {
+    expect(list[0]).toMatchObject({
+      hash: "a19fe9a (HEAD -> trunk, origin/trunk)",
+      title: "Build light and dark vs code styles webpack",
+      date: new Date("Sat Nov 21 21:38:19 2020 +0000"),
+      author: "Random Bob <random.bob@example.com>",
+    });
   });
 });
 
