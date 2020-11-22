@@ -1,6 +1,6 @@
 import { commitList } from "./commit-list";
 
-describe("Commit list", () => {
+describe("Build commit list", () => {
   let list: Commit[] = [];
 
   beforeAll(async () => {
@@ -11,12 +11,30 @@ describe("Commit list", () => {
     expect(list).toHaveLength(3);
   });
 
-  test("build commit object", () => {
+  test("commit object with branch name", () => {
     expect(list[0]).toMatchObject({
-      hash: "a19fe9a (HEAD -> trunk, origin/trunk)",
+      hash: "a19fe9a",
+      branch: "HEAD -> trunk, origin/trunk",
       title: "Build light and dark vs code styles webpack",
       date: new Date("Sat Nov 21 21:38:19 2020 +0000"),
       author: "Random Bob <random.bob@example.com>",
+    });
+    expect(list[1]).toMatchObject({
+      branch: "HEAD -> trunk",
+    });
+  });
+
+  test("commit body", () => {
+    expect(list[0].body.trim().split("\n")).toEqual([
+      "- css-loader can parse imported css in js",
+      "- mini css bundles it into one file",
+    ]);
+  });
+
+  test("merge commit has property", () => {
+    expect(list[2]).toMatchObject({
+      merge: "3efd6a5 c20cf5b",
+      title: "Add a suggest-coauthors command",
     });
   });
 });
@@ -30,7 +48,7 @@ Date:   Sat Nov 21 21:38:19 2020 +0000
     - css-loader can parse imported css in js
     - mini css bundles it into one file
 
-commit 40dc872
+commit 40dc872 (HEAD -> trunk)
 Author: Random Sally <random.joe@example.com>
 Date:   Sat Nov 21 17:23:20 2020 +0000
 

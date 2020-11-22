@@ -7,10 +7,6 @@ function matched(matchedText: string[] | null): string {
 }
 
 function buildCommit(commit: string): Commit {
-  const cleanCommit = commit
-    .split("\n")
-    .filter((text) => text.length)
-    .map((txt) => txt.trim());
   const initialCommit: Commit = {
     title: "",
     body: "",
@@ -18,9 +14,15 @@ function buildCommit(commit: string): Commit {
     author: "",
     date: new Date(),
   };
-  return cleanCommit.reduce((acc, item, i) => {
+
+  const splitCommit = cleanCommitSplit(commit);
+  return splitCommit.reduce((acc, item, i) => {
     if (i === 0) {
-      acc.hash = item;
+      const branch = matched(item.match(/\((.*)\)/));
+      acc.hash = matched(item.match(/(\w+)/));
+      if (branch) {
+        acc.branch = branch;
+      }
       return acc;
     }
     if (item.includes("Merge:")) {
@@ -44,6 +46,13 @@ function buildCommit(commit: string): Commit {
 
     return acc;
   }, initialCommit);
+}
+
+function cleanCommitSplit(commit: string) {
+  return commit
+    .split("\n")
+    .filter((text) => text.length)
+    .map((txt) => txt.trim());
 }
 
 export async function commitList(commitLog: string): Promise<Commit[]> {
