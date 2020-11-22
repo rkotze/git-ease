@@ -12,7 +12,7 @@ async function silentExec(command: string) {
 
     return response.stdout;
   } catch (err) {
-    console.log(`GitMob silentExec: "${command}" ${err.message}`);
+    console.log(`GitEase silentExec: "${command}" ${err.message}`);
     return "";
   }
 }
