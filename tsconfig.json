@@ -18,6 +18,7 @@
 	"exclude": [
 		"node_modules",
 		".vscode-test",
-		"jest.config.ts"
+		"jest.config.ts",
+		"src/webview"
 	]
 }

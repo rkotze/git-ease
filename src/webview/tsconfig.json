@@ -1,0 +1,7 @@
+{  
+  "compilerOptions": {
+    "types": ["jest", "svelte"]
+  },
+  "include": ["./**/*", ],
+  "exclude": ["../../node_modules/*"]
+}

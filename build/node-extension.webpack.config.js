@@ -19,7 +19,11 @@ const webview = {
     vscode: "commonjs vscode", // the vscode-module is created on-the-fly and must be excluded. Add other modules that cannot be webpack'ed, 📖 -> https://webpack.js.org/configuration/externals/
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    alias: {
+      svelte: path.resolve("node_modules", "svelte"),
+    },
+    extensions: [".mjs", ".ts", ".js", ".svelte"],
+    mainFields: ["svelte", "browser", "module", "main"],
   },
   plugins: [
     new miniCssExtractPlugin({
@@ -29,24 +33,29 @@ const webview = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.(html|svelte)$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "ts-loader",
+        use: {
+          loader: "svelte-loader",
+          options: {
+            emitCss: true,
           },
-        ],
+        },
       },
       {
         test: /\.css$/i,
         exclude: /node_modules/,
         use: [miniCssExtractPlugin.loader, "css-loader"],
       },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: "ts-loader",
+      },
     ],
   },
 };
 
-/**@type {import('webpack').Configuration}*/
 const node = {
   target: "node", // vscode extensions run in a Node.js-context 📖 -> https://webpack.js.org/configuration/node/
   mode: "none", // this leaves the source code as close as possible to the original (when packaging we set this to 'production')
