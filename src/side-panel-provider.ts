@@ -25,7 +25,6 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
 
     webviewView.webview.onDidReceiveMessage(async (data) => {
-      console.log("SidePanelProvider -> constructor -> data", data);
       switch (data.command) {
         case "commitList":
           return gitLog(webviewView);
