@@ -97,7 +97,9 @@
       <div class="action-bar-toggle">
         <div class="title">
           <span class="author-border">
-            <span class="author" title={commit.author}>JC</span>
+            <span
+              class="author"
+              title={`${commit.author.name} <${commit.author.email}>`}>{commit.author.initials}</span>
           </span>
           {commit.title}
         </div>

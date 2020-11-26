@@ -17,10 +17,17 @@ describe("Build commit list", () => {
       branch: "HEAD -> trunk, origin/trunk",
       title: "Build light and dark commit vs code styles webpack",
       date: new Date("Sat Nov 21 21:38:19 2020 +0000"),
-      author: "Random Bob <random.bob@example.com>",
     });
     expect(list[1]).toMatchObject({
       branch: "HEAD -> trunk",
+    });
+  });
+
+  test("commit to have author", () => {
+    expect(list[0].author).toEqual({
+      name: "Random Bob",
+      email: "random.bob@example.com",
+      initials: "RB",
     });
   });
 

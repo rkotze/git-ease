@@ -6,12 +6,29 @@ function matched(matchedText: string[] | null): string {
   return "";
 }
 
+function extractAuthor(authorString: string): Author | null {
+  const authorArray = authorString.match(/(.+)\s<(.+)>/i);
+  if (authorArray) {
+    const [, name, email] = authorArray;
+    const initials = name
+      .split(" ")
+      .map((word) => word[0])
+      .join("");
+    return {
+      name,
+      email,
+      initials,
+    };
+  }
+  return null;
+}
+
 function buildCommit(commit: string): Commit {
   const initialCommit: Commit = {
     title: "",
     body: "",
     hash: "",
-    author: "",
+    author: { name: "", email: "", initials: "" },
     date: new Date(),
   };
 
@@ -30,7 +47,7 @@ function buildCommit(commit: string): Commit {
       return acc;
     }
     if (item.includes("Author:")) {
-      acc.author = matched(item.match(/Author:\s+(.*)/));
+      acc.author = extractAuthor(matched(item.match(/Author:\s+(.*)/)));
       return acc;
     }
     if (item.includes("Date:")) {
