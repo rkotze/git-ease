@@ -109,7 +109,9 @@
       <div class="full-commit">
         <p class="hash">{commit.hash}</p>
         <p class="date">{commit.date}</p>
-        <p class="body">{commit.body}</p>
+        <p class="body">
+          {@html commit.body.replace(/\n/g, '<br />')}
+        </p>
       </div>
     </li>
   {/each}

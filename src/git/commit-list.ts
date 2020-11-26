@@ -56,7 +56,11 @@ function cleanCommitSplit(commit: string) {
 }
 
 export function commitList(commitLog: string): Commit[] {
-  const commitList = commitLog.split("commit ");
+  const commitList = commitLog
+    .replace(/commit\s[a-z0-9]{40}/gi, function (substring: string) {
+      return ":easeSplit:" + substring.slice(7);
+    })
+    .split(":easeSplit:");
   commitList.shift();
 
   return commitList.map((commit) => buildCommit(commit));

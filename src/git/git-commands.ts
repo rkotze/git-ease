@@ -26,5 +26,8 @@ function cmdOptions(): ExecOptionsWithStringEncoding {
 }
 
 export async function history(): Promise<string> {
-  return silentExec("git log --abbrev-commit");
+  return silentExec("git log");
 }
+
+// note: option for later
+// git log -n 3 --pretty=format:%n%h%n%d%naname-%an%naemail-%ae%ndate-%ad%n%B:commitEase:

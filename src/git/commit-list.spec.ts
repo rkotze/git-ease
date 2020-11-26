@@ -13,9 +13,9 @@ describe("Build commit list", () => {
 
   test("commit object with branch name", () => {
     expect(list[0]).toMatchObject({
-      hash: "a19fe9a",
+      hash: "ad67ecf86dba7580820ec325d527efaffd8245fa",
       branch: "HEAD -> trunk, origin/trunk",
-      title: "Build light and dark vs code styles webpack",
+      title: "Build light and dark commit vs code styles webpack",
       date: new Date("Sat Nov 21 21:38:19 2020 +0000"),
       author: "Random Bob <random.bob@example.com>",
     });
@@ -39,22 +39,22 @@ describe("Build commit list", () => {
   });
 });
 
-const commitLog = `commit a19fe9a (HEAD -> trunk, origin/trunk)
+const commitLog = `commit ad67ecf86dba7580820ec325d527efaffd8245fa (HEAD -> trunk, origin/trunk)
 Author: Random Bob <random.bob@example.com>
 Date:   Sat Nov 21 21:38:19 2020 +0000
 
-    Build light and dark vs code styles webpack
+    Build light and dark commit vs code styles webpack
 
     - css-loader can parse imported css in js
     - mini css bundles it into one file
 
-commit 40dc872 (HEAD -> trunk)
+commit d73e69a759580ac04f4204b7dcf11604c7953a99 (HEAD -> trunk)
 Author: Random Sally <random.joe@example.com>
 Date:   Sat Nov 21 17:23:20 2020 +0000
 
     Setup webpack config for node and web modules
 
-commit 80djw72
+commit 74d7854aab87da26a5687967fefc8428527481f3
 Merge: 3efd6a5 c20cf5b
 Author: Random Joe <random.joe@example.com>
 Date:   Sun Jul 21 20:27:06 2019 +0100
