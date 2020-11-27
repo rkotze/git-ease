@@ -1,4 +1,5 @@
 <script>
+  import octicons from "@primer/octicons";
   let log = [];
   window.addEventListener("message", (event) => {
     const message = event.data;
@@ -70,10 +71,11 @@
     display: inline-block;
   }
 
-  li.commit .actions .octicon {
+  li.commit .actions :global(.octicon) {
     fill: #ccc;
     height: 16px;
     width: 16px;
+    vertical-align: text-top;
   }
 
   li.commit:hover .actions {
@@ -104,8 +106,9 @@
           {commit.title}
         </div>
         <div class="actions">
-          <span class="octicon heart-fill item" />
-          <span class="octicon bell-fill item" />
+          <span class="octicon item">
+            {@html octicons['inbox'].toSVG()}
+          </span>
         </div>
       </div>
       <div class="full-commit">
