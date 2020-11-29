@@ -10,22 +10,17 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:git-ease.helloWorld",
-    "onView:gitEasePanel"
+    "onView:git-ease.scm-panel"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
-      {
-        "command": "git-ease.helloWorld",
-        "title": "Hello World"
-      }
     ],
     "views": {
       "scm": [
         {
           "type": "webview",
-          "id": "gitEasePanel",
+          "id": "git-ease.scm-panel",
           "name": "Git ease"
         }
       ]
