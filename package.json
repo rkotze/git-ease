@@ -6,6 +6,22 @@
   "engines": {
     "vscode": "^1.51.0"
   },
+  "publisher": "RichardKotze",
+  "galleryBanner": {
+    "color": "#232323",
+    "theme": "dark"
+  },
+  "author": {
+    "name": "Richard Kotze",
+    "email": "richkotze@outlook.com"
+  },
+  "homepage": "https://github.com/rkotze/git-ease/blob/master/README.md",
+  "bugs": {
+    "url": "https://github.com/rkotze/git-ease/issues"
+  },
+  "extensionDependencies": [
+    "vscode.git"
+  ],
   "categories": [
     "Other"
   ],
@@ -14,8 +30,7 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-    ],
+    "commands": [],
     "views": {
       "scm": [
         {
