@@ -8,6 +8,25 @@
 </script>
 
 <style>
+  :global(.vscode-dark) li.commit .action-bar-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  :global(.vscode-dark) li.commit .title .author {
+    background-color: #222;
+  }
+  :global(.vscode-dark) li.commit .actions :global(.octicon) {
+    fill: #ccc;
+  }
+  :global(.vscode-light) li.commit .action-bar-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  :global(.vscode-light) li.commit .title .author {
+    background-color: #eee;
+  }
+  :global(.vscode-light) li.commit .actions :global(.octicon) {
+    fill: #222;
+  }
+
   li.commit {
     margin-top: 2px;
     overflow-wrap: break-word;
@@ -24,7 +43,6 @@
 
   li.commit .title .author {
     display: inline-block;
-    background-color: #151515;
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -72,7 +90,6 @@
   }
 
   li.commit .actions :global(.octicon) {
-    fill: #ccc;
     height: 16px;
     width: 16px;
     vertical-align: text-top;
