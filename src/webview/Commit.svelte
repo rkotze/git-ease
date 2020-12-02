@@ -69,6 +69,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1 70%;
   }
 
   li.commit .title:hover {
@@ -96,11 +97,12 @@
   }
 
   li.commit:hover .actions {
-    display: block;
+    display: inline-flex;
   }
 
   li.commit .action-bar-toggle {
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
   }
 
@@ -112,6 +114,22 @@
 
   li.commit .full-commit.open {
     display: block;
+  }
+
+  li.commit .micro-info {
+    font-size: 0.6em;
+    flex: 1 100%;
+    margin: 0 0 0 35px;
+    letter-spacing: 1px;
+    line-height: 1.8em;
+  }
+
+  li.commit .badge {
+    background-color: rgb(146, 3, 241);
+    color: #fff;
+    padding: 1px 4px;
+    border-radius: 2px;
+    margin-right: 2px;
   }
 </style>
 
@@ -130,7 +148,11 @@
         {@html octicons['inbox'].toSVG()}
       </span>
     </div>
+    <div class="micro-info">
+      {#if commit.branch}<span class="badge">{commit.branch}</span>{/if}
+    </div>
   </div>
+
   <div class="full-commit" class:open>
     <p class="hash">{commit.hash}</p>
     <p class="date">{commit.date}</p>
