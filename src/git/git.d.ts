@@ -2,7 +2,7 @@ type Commit = {
   hash: string;
   merge?: string;
   branch?: string;
-  author: Author | null;
+  author?: Author;
   date: Date;
   title: string;
   body: string;

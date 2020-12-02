@@ -26,7 +26,7 @@ function cmdOptions(): ExecOptionsWithStringEncoding {
 }
 
 export async function history(): Promise<string> {
-  return silentExec("git log");
+  return silentExec("git log --decorate=short");
 }
 
 // note: option for later

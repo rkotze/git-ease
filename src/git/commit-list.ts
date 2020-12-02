@@ -6,7 +6,7 @@ function matched(matchedText: string[] | null): string {
   return "";
 }
 
-function extractAuthor(authorString: string): Author | null {
+function extractAuthor(authorString: string): Author | undefined {
   const authorArray = authorString.match(/(.+)\s<(.+)>/i);
   if (authorArray) {
     const [, name, email] = authorArray;
@@ -20,7 +20,6 @@ function extractAuthor(authorString: string): Author | null {
       initials,
     };
   }
-  return null;
 }
 
 function buildCommit(commit: string): Commit {
