@@ -1,5 +1,9 @@
 <script>
   import octicons from "@primer/octicons";
+  import relativeDate from "tiny-relative-date";
+  import dateFormat from "dateformat";
+  import Badge from "./Badge.svelte";
+
   let open = false;
   export let commit;
   function toggleFullCommit() {
@@ -8,7 +12,7 @@
 </script>
 
 <style>
-  :global(.vscode-dark) li.commit .action-bar-toggle:hover {
+  :global(.vscode-dark) li.commit:hover {
     background-color: rgba(255, 255, 255, 0.2);
   }
   :global(.vscode-dark) li.commit .title .author {
@@ -17,7 +21,7 @@
   :global(.vscode-dark) li.commit .actions :global(.octicon) {
     fill: #ccc;
   }
-  :global(.vscode-light) li.commit .action-bar-toggle:hover {
+  :global(.vscode-light) li.commit:hover {
     background-color: rgba(0, 0, 0, 0.2);
   }
   :global(.vscode-light) li.commit .title .author {
@@ -123,14 +127,6 @@
     letter-spacing: 1px;
     line-height: 1.8em;
   }
-
-  li.commit .badge {
-    background-color: rgb(146, 3, 241);
-    color: #fff;
-    padding: 1px 4px;
-    border-radius: 2px;
-    margin-right: 2px;
-  }
 </style>
 
 <li class="commit">
@@ -149,13 +145,16 @@
       </span>
     </div>
     <div class="micro-info">
-      {#if commit.branch}<span class="badge">{commit.branch}</span>{/if}
+      <Badge type="clear">{relativeDate(commit.date)}</Badge>
+      {#if commit.branch}
+        <Badge type="green">{commit.branch}</Badge>
+      {/if}
     </div>
   </div>
 
   <div class="full-commit" class:open>
-    <p class="hash">{commit.hash}</p>
-    <p class="date">{commit.date}</p>
+    <p class="hash">{commit.hash.slice(0, 7)}</p>
+    <p class="date">{dateFormat(commit.date, 'd mmm yyyy HH:MM:ss')}</p>
     <p class="body">
       {@html commit.body.replace(/\n/g, '<br />')}
     </p>
