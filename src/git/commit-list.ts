@@ -73,7 +73,7 @@ function cleanCommitSplit(commit: string) {
 
 export function commitList(commitLog: string): Commit[] {
   const commitList = commitLog
-    .replace(/commit\s[a-z0-9]{40}/gi, function (substring: string) {
+    .replace(/^commit\s[a-z0-9]{40}/gim, function (substring: string) {
       return ":easeSplit:" + substring.slice(7);
     })
     .split(":easeSplit:");

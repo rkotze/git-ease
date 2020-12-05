@@ -8,7 +8,7 @@ describe("Build commit list", () => {
   });
 
   test("should have three commits", () => {
-    expect(list).toHaveLength(3);
+    expect(list).toHaveLength(4);
   });
 
   test("commit object with branch name", () => {
@@ -44,6 +44,15 @@ describe("Build commit list", () => {
       title: "Add a suggest-coauthors command",
     });
   });
+
+  test("split does not break on revert commit", () => {
+    expect(list[3]).toMatchObject({
+      title: 'Revert "Replace topLevelDir with cwd as they return same result"',
+      body: expect.stringContaining(
+        "This reverts commit 7fa152aab16ef38ac00ec705ae1b71774b23266b."
+      ),
+    });
+  });
 });
 
 const commitLog = `commit ad67ecf86dba7580820ec325d527efaffd8245fa (HEAD -> trunk, origin/trunk)
@@ -56,7 +65,7 @@ Date:   Sat Nov 21 21:38:19 2020 +0000
     - mini css bundles it into one file
 
 commit d73e69a759580ac04f4204b7dcf11604c7953a99 (HEAD -> trunk)
-Author: Random Sally <random.joe@example.com>
+Author: Random Sally <random.sally@example.com>
 Date:   Sat Nov 21 17:23:20 2020 +0000
 
     Setup webpack config for node and web modules
@@ -72,4 +81,12 @@ Date:   Sun Jul 21 20:27:06 2019 +0100
     on the repo you are working on. This command makes it as easy as
     possible to add an existing author from the current repo to your list of
     coauthors.
+
+commit 77c77ee083b60ff88e8c2bf97acb4d4df575d9ff (cjlarose/compute-template-path-using-top-level-dir, compute-template-path-using-top-level-dir)
+Author: Chris LaRose <cjlarose@gmail.com>
+Date:   Thu Jan 17 10:26:14 2019 -0800
+
+    Revert "Replace topLevelDir with cwd as they return same result"
+
+    This reverts commit 7fa152aab16ef38ac00ec705ae1b71774b23266b.
 `;
