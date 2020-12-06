@@ -31,3 +31,7 @@ export async function history(): Promise<string> {
 
 // note: option for later
 // git log -n 3 --pretty=format:%n%h%n%d%naname-%an%naemail-%ae%ndate-%ad%n%B:commitEase:
+
+export async function remote(): Promise<string> {
+  return silentExec("git remote -v");
+}

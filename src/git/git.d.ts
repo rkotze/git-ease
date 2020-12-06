@@ -13,3 +13,10 @@ type Author = {
   email: string;
   initials: string;
 };
+
+type RemoteInfo = {
+  name: string;
+  ssh?: string;
+  https?: string;
+  url: string;
+};
