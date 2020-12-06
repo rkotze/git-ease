@@ -3,6 +3,7 @@
   import relativeDate from "tiny-relative-date";
   import dateFormat from "dateformat";
   import Badge from "./Badge.svelte";
+  import { parseMojis } from "./parse-mojis";
 
   let open = false;
   export let commit;
@@ -137,7 +138,7 @@
           class="author"
           title={`${commit.author.name} <${commit.author.email}>`}>{commit.author.initials}</span>
       </span>
-      {commit.title}
+      {parseMojis(commit.title)}
     </div>
     <div class="actions">
       <span class="octicon item">
