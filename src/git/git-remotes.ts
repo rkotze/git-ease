@@ -16,6 +16,16 @@ export function buildRemoteInfo(gitResponse: string): Array<RemoteInfo> {
         );
       }
 
+      if (value.includes("https:")) {
+        https = value;
+        ssh = value.replace(
+          /https:\/\/([a-z0-9\.-]+)\/(.+)/i,
+          function (_matched: string, g1: string, g2: string): string {
+            return `git@${g1}:${g2}`;
+          }
+        );
+      }
+
       remotes.set(name, {
         name,
         ssh,
