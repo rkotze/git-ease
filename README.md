@@ -2,7 +2,7 @@
 
 > Making it easy to make good commits
 
-Introduce a clean and interactive UI for viewing the Git log in VS Code SCM panel. Reuse last or any commit message to help with next commit.
+Introduce a clean and interactive UI for viewing the Git log in VS Code SCM panel. Reuse any commit message to help with next commit.
 
 **Status** Currently building Alpha release
 
