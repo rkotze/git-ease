@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { getNonce } from "./get-nonce";
+import { copyCommitToInput } from "./messages/copy-commit-to-input";
 import { gitLog } from "./messages/git-log";
 
 export class SidePanelProvider implements vscode.WebviewViewProvider {
@@ -28,6 +29,8 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
       switch (data.command) {
         case "commitList":
           return gitLog(webviewView);
+        case "copyCommitToInput":
+          return copyCommitToInput(data.args[0]);
       }
     });
   }

@@ -2,13 +2,20 @@
   import octicons from "@primer/octicons";
   import relativeDate from "tiny-relative-date";
   import dateFormat from "dateformat";
+  import { getContext } from "svelte";
   import Badge from "./Badge.svelte";
   import { parseMojis } from "./parse-mojis";
 
-  let open = false;
   export let commit;
+  const vscode = getContext("vscode");
+  let open = false;
   function toggleFullCommit() {
     open = !open;
+  }
+
+  function copyMessage() {
+    const message = [commit.title, commit.body].join("\n");
+    vscode.postMessage({ command: "copyCommitToInput", args: [message] });
   }
 </script>
 
@@ -141,7 +148,7 @@
       {parseMojis(commit.title)}
     </div>
     <div class="actions">
-      <span class="octicon item">
+      <span class="octicon item" on:click={copyMessage}>
         {@html octicons['inbox'].toSVG()}
       </span>
     </div>

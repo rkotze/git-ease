@@ -10,4 +10,7 @@ vscode.postMessage({ command: "commitList" });
 
 new App({
   target: document.getElementById("app"),
+  props: {
+    vscode,
+  },
 });
