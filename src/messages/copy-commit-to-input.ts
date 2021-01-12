@@ -1,5 +1,8 @@
-import * as vscode from "vscode";
+import { GitExt } from "../vscode-git-extension/git-ext";
 
 export async function copyCommitToInput(message: string): Promise<void> {
-  vscode.window.showInformationMessage(message);
+  const gitExt = new GitExt();
+  gitExt.updateSelectedInput(function(input){
+    return message + input;
+  });
 }

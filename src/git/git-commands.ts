@@ -3,7 +3,7 @@
 
 import { exec, ExecOptionsWithStringEncoding } from "child_process";
 import { promisify } from "util";
-import { workspace } from "vscode";
+import { GitExt } from "../vscode-git-extension/git-ext";
 
 async function silentExec(command: string) {
   const execAsync = promisify(exec);
@@ -18,10 +18,10 @@ async function silentExec(command: string) {
 }
 
 function cmdOptions(): ExecOptionsWithStringEncoding {
-  const path = workspace.workspaceFolders || [{ uri: { fsPath: "" } }];
+  const gitExt = new GitExt();
   return {
     encoding: "utf8",
-    cwd: path[0].uri.fsPath,
+    cwd: gitExt.rootPath || "",
   };
 }
 

@@ -95,11 +95,13 @@
     display: none;
   }
 
-  li.commit .actions .item {
+  li.commit .actions .button {
     padding: 0 2px;
     margin: 0 1px;
     cursor: pointer;
     display: inline-block;
+    background-color: transparent;
+    border: none;
   }
 
   li.commit .actions :global(.octicon) {
@@ -148,9 +150,12 @@
       {parseMojis(commit.title)}
     </div>
     <div class="actions">
-      <span class="octicon item" on:click={copyMessage}>
+      <button
+        class="octicon button"
+        on:click={copyMessage}
+        title="Copy commit message to input box">
         {@html octicons['inbox'].toSVG()}
-      </span>
+      </button>
     </div>
     <div class="micro-info">
       <Badge type="clear">{relativeDate(commit.date)}</Badge>
