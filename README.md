@@ -1,4 +1,4 @@
-# Git-ease
+# <img src="https://user-images.githubusercontent.com/10452163/104818888-310d0000-5822-11eb-8d37-89d917672783.png" width="80" alt="Git ease" /> Git-ease
 
 The idea is very much WIP.
 
