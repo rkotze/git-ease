@@ -1,8 +1,16 @@
 # Git-ease
 
-> Making it easy to make good commits
+The idea is very much WIP.
 
-Introduce a clean and interactive UI for viewing the Git log in VS Code SCM panel. Reuse any commit message to help with next commit.
+> Making it easy to make manage Git
+
+### Problem
+
+I find the current UI features in VS Code too limiting to represent Git features in a convenient way. There is also so many connected documents to Git repos (issues, PRs, etc) which i think can be more visible.
+
+### Vision
+
+Introduce a clean and interactive UI for viewing the Git log in VS Code SCM panel.
 
 **Status** Currently building Alpha release
 
@@ -17,5 +25,6 @@ For now clone and package the project using `vsce`.
 ## Features
 
 - View easy to read Git log
+- Support Git emojis
 - Copy previous commit messages 
 

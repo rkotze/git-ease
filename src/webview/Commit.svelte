@@ -1,10 +1,13 @@
 <script>
   import octicons from "@primer/octicons";
   import relativeDate from "tiny-relative-date";
-  import dateFormat from "dateformat";
+
   import { getContext } from "svelte";
-  import Badge from "./Badge.svelte";
   import { parseMojis } from "./parse-mojis";
+
+  import Badge from "./Badge.svelte";
+  import CommitAuthors from "./Commit-authors.svelte";
+  import CommitMeta from "./Commit-meta.svelte";
 
   export let commit;
   const vscode = getContext("vscode");
@@ -70,10 +73,6 @@
     height: 20px;
     background: linear-gradient(to right, red, purple);
     padding: 1px;
-  }
-
-  li.commit .hash {
-    font-family: "Courier New", Courier, monospace;
   }
 
   li.commit .title {
@@ -166,10 +165,11 @@
   </div>
 
   <div class="full-commit" class:open>
-    <p class="hash">{commit.hash.slice(0, 7)}</p>
-    <p class="date">{dateFormat(commit.date, 'd mmm yyyy HH:MM:ss')}</p>
     <p class="body">
+      <strong>{commit.title}</strong><br />
       {@html commit.body.replace(/\n/g, '<br />')}
     </p>
+    <CommitMeta date={commit.date} hash={commit.hash} />
+    <CommitAuthors author={commit.author} />
   </div>
 </li>
