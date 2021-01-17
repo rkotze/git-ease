@@ -6,7 +6,6 @@ import { SidePanelProvider } from "./side-panel-provider";
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
   const provider = new SidePanelProvider(context.extensionUri);
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider("git-ease.scm-panel", provider)

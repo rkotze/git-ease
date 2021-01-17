@@ -22,9 +22,47 @@
   }
 </script>
 
+<li class="commit">
+  <div class="action-bar-toggle">
+    <div class="title" on:click={toggleFullCommit}>
+      <span class="author-border">
+        <span
+          class="author"
+          title={`${commit.author.name} <${commit.author.email}>`}
+          >{commit.author.initials}</span
+        >
+      </span>
+      {parseMojis(commit.title)}
+    </div>
+    <div class="actions">
+      <button
+        class="octicon button"
+        on:click={copyMessage}
+        title="Copy commit message to input box">
+        {@html octicons["inbox"].toSVG()}
+      </button>
+    </div>
+    <div class="micro-info">
+      <Badge type="clear">{relativeDate(commit.date)}</Badge>
+      {#if commit.branch}
+        <Badge type="green">{commit.branch}</Badge>
+      {/if}
+    </div>
+  </div>
+
+  <div class="full-commit" class:open>
+    <p class="body">
+      <strong>{commit.title}</strong><br />
+      {@html commit.body.replace(/\n/g, "<br />")}
+    </p>
+    <CommitMeta date={commit.date} hash={commit.hash} />
+    <CommitAuthors author={commit.author} />
+  </div>
+</li>
+
 <style>
   :global(.vscode-dark) li.commit:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.06);
   }
   :global(.vscode-dark) li.commit .title .author {
     background-color: #222;
@@ -33,7 +71,7 @@
     fill: #ccc;
   }
   :global(.vscode-light) li.commit:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.06);
   }
   :global(.vscode-light) li.commit .title .author {
     background-color: #eee;
@@ -137,39 +175,3 @@
     line-height: 1.8em;
   }
 </style>
-
-<li class="commit">
-  <div class="action-bar-toggle">
-    <div class="title" on:click={toggleFullCommit}>
-      <span class="author-border">
-        <span
-          class="author"
-          title={`${commit.author.name} <${commit.author.email}>`}>{commit.author.initials}</span>
-      </span>
-      {parseMojis(commit.title)}
-    </div>
-    <div class="actions">
-      <button
-        class="octicon button"
-        on:click={copyMessage}
-        title="Copy commit message to input box">
-        {@html octicons['inbox'].toSVG()}
-      </button>
-    </div>
-    <div class="micro-info">
-      <Badge type="clear">{relativeDate(commit.date)}</Badge>
-      {#if commit.branch}
-        <Badge type="green">{commit.branch}</Badge>
-      {/if}
-    </div>
-  </div>
-
-  <div class="full-commit" class:open>
-    <p class="body">
-      <strong>{commit.title}</strong><br />
-      {@html commit.body.replace(/\n/g, '<br />')}
-    </p>
-    <CommitMeta date={commit.date} hash={commit.hash} />
-    <CommitAuthors author={commit.author} />
-  </div>
-</li>

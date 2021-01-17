@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { getNonce } from "./get-nonce";
+import { watchForCommit } from "./git/watch-for-commit";
 import { copyCommitToInput } from "./messages/copy-commit-to-input";
 import { gitLog } from "./messages/git-log";
 
@@ -31,6 +32,13 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
           return gitLog(webviewView);
         case "copyCommitToInput":
           return copyCommitToInput(data.args[0]);
+        case "panelReady":
+          watchForCommit(function () {
+            setTimeout(function () {
+              gitLog(webviewView);
+            }, 500);
+          });
+          return gitLog(webviewView);
       }
     });
   }

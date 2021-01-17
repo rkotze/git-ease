@@ -16,6 +16,10 @@
     "name": "Richard Kotze",
     "email": "richkotze@outlook.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkotze/git-ease.git"
+  },
   "homepage": "https://github.com/rkotze/git-ease/blob/trunk/README.md",
   "bugs": {
     "url": "https://github.com/rkotze/git-ease/issues"

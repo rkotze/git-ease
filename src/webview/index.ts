@@ -6,7 +6,7 @@ declare var acquireVsCodeApi: any;
 
 const vscode = acquireVsCodeApi();
 
-vscode.postMessage({ command: "commitList" });
+vscode.postMessage({ command: "panelReady" });
 
 new App({
   target: document.getElementById("app"),
