@@ -79,7 +79,9 @@ function buildCommit(commit: string): Commit {
       return acc;
     }
 
-    acc.body += item + "\n";
+    if (item.trim()) {
+      acc.body += item + "\n";
+    }
 
     return acc;
   }, initialCommit);

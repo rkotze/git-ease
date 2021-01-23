@@ -21,7 +21,7 @@ export function watchForCommit(cb: Function): fs.FSWatcher | undefined {
   }
 }
 
-let fsWait: boolean | NodeJS.Timeout = false;
+let fsWait: number | boolean | NodeJS.Timeout = false;
 function debounceFsWatch() {
   if (fsWait) {
     return true;
