@@ -22,6 +22,17 @@ function extractAuthor(authorString: string): Author | undefined {
   }
 }
 
+function extractCoAuthors(authorString: string): Author | undefined {
+  const authorArray = authorString.match(/(.+)\s<(.+)>/i);
+  if (authorArray) {
+    const [, name, email] = authorArray;
+    return {
+      name,
+      email,
+    };
+  }
+}
+
 function buildCommit(commit: string): Commit {
   const initialCommit: Commit = {
     title: "",
@@ -29,6 +40,7 @@ function buildCommit(commit: string): Commit {
     hash: "",
     author: { name: "", email: "", initials: "" },
     date: new Date(),
+    coAuthors: [],
   };
 
   const splitCommit = cleanCommitSplit(commit);
@@ -47,6 +59,15 @@ function buildCommit(commit: string): Commit {
     }
     if (item.includes("Author:")) {
       acc.author = extractAuthor(matched(item.match(/Author:\s+(.*)/)));
+      return acc;
+    }
+    if (item.includes("Co-authored-by:")) {
+      const coAuthor: Author | undefined = extractCoAuthors(
+        matched(item.match(/Co-authored-by:\s+(.*)/))
+      );
+      if (coAuthor) {
+        acc.coAuthors.push(coAuthor);
+      }
       return acc;
     }
     if (item.includes("Date:")) {

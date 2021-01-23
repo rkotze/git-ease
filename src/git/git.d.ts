@@ -3,6 +3,7 @@ type Commit = {
   merge?: string;
   branch?: string;
   author?: Author;
+  coAuthors: Author[];
   date: Date;
   title: string;
   body: string;
@@ -11,7 +12,7 @@ type Commit = {
 type Author = {
   name: string;
   email: string;
-  initials: string;
+  initials?: string;
 };
 
 type RemoteInfo = {

@@ -32,6 +32,7 @@ describe("Build commit list", () => {
   });
 
   test("commit body", () => {
+    console.log("list[0].body", list[0].body);
     expect(list[0].body.trim().split("\n")).toEqual([
       "- css-loader can parse imported css in js",
       "- mini css bundles it into one file",
@@ -53,6 +54,22 @@ describe("Build commit list", () => {
       ),
     });
   });
+
+  test("list co-authors", () => {
+    expect(list[0]).toMatchObject({
+      hash: "ad67ecf86dba7580820ec325d527efaffd8245fa",
+      coAuthors: [
+        {
+          name: "John Doe",
+          email: "john.doe@unknown.com",
+        },
+        {
+          name: "Jane Doe",
+          email: "jane.doe@somewhere.co.uk",
+        },
+      ],
+    });
+  });
 });
 
 const commitLog = `commit ad67ecf86dba7580820ec325d527efaffd8245fa (HEAD -> trunk, origin/trunk)
@@ -63,6 +80,9 @@ Date:   Sat Nov 21 21:38:19 2020 +0000
 
     - css-loader can parse imported css in js
     - mini css bundles it into one file
+
+    Co-authored-by: John Doe <john.doe@unknown.com>
+    Co-authored-by: Jane Doe <jane.doe@somewhere.co.uk>
 
 commit d73e69a759580ac04f4204b7dcf11604c7953a99 (HEAD -> trunk)
 Author: Random Sally <random.sally@example.com>
