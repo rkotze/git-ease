@@ -53,7 +53,9 @@
   <div class="full-commit" class:open>
     <p class="body">
       <strong>{commit.title}</strong><br />
-      {@html commit.body.replace(/\n/g, "<br />")}
+      {#each commit.body.split("\n") as newline}
+        {newline}<br />
+      {/each}
     </p>
     <CommitMeta date={commit.date} hash={commit.hash} />
     <CommitAuthors author={commit.author} />
