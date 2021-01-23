@@ -58,7 +58,7 @@
       {/each}
     </p>
     <CommitMeta date={commit.date} hash={commit.hash} />
-    <CommitAuthors author={commit.author} />
+    <CommitAuthors author={commit.author} coAuthors={commit.coAuthors} />
   </div>
 </li>
 
