@@ -32,7 +32,6 @@ describe("Build commit list", () => {
   });
 
   test("commit body", () => {
-    console.log("list[0].body", list[0].body);
     expect(list[0].body.trim().split("\n")).toEqual([
       "- css-loader can parse imported css in js",
       "- mini css bundles it into one file",
