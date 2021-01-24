@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { getNonce } from "./get-nonce";
 import { copyCommitToInput } from "./messages/copy-commit-to-input";
 import { gitLog } from "./messages/git-log";
+import { gitRemotesList } from "./messages/git-remotes-list";
 import { GitExt } from "./vscode-git-extension/git-ext";
 
 export class SidePanelProvider implements vscode.WebviewViewProvider {
@@ -37,6 +38,7 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
           gitExt.onRepoChange(function () {
             gitLog(webviewView);
           });
+          gitRemotesList(webviewView);
           return gitLog(webviewView);
       }
     });

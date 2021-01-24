@@ -10,6 +10,8 @@
   import CommitMeta from "./Commit-meta.svelte";
 
   export let commit;
+  export let remotes;
+
   const vscode = getContext("vscode");
   let open = false;
   function toggleFullCommit() {
@@ -19,6 +21,24 @@
   function copyMessage() {
     const message = [commit.title, commit.body].join("\n");
     vscode.postMessage({ command: "copyCommitToInput", args: [message] });
+  }
+
+  function getOrigin() {
+    const origin = remotes.find(({ name }) => name === "origin");
+    if (!origin) {
+      return remotes[0];
+    }
+    return origin;
+  }
+
+  const matchIssueRegex = /(#)([0-9]+)/i;
+  function linkIssue(text) {
+    const origin = getOrigin();
+    return text.replace(matchIssueRegex, function (_match, g1, g2) {
+      return `<a href="${
+        origin.url
+      }/issues/${g2}" target="_blank">${g1 + g2}</a>`;
+    });
   }
 </script>
 
@@ -54,7 +74,11 @@
     <p class="body">
       <strong>{commit.title}</strong><br />
       {#each commit.body.split("\n") as newline}
-        {newline}<br />
+        {#if matchIssueRegex.test(newline)}
+          {@html linkIssue(newline)}<br />
+        {:else}
+          {newline}<br />
+        {/if}
       {/each}
     </p>
     <CommitMeta date={commit.date} hash={commit.hash} />

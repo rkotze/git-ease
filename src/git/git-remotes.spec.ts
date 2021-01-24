@@ -1,10 +1,12 @@
-import { buildRemoteInfo } from "./git-remotes";
+import { gitRemotes } from "./git-remotes";
 
 describe("git remotes", () => {
   it("build remote info from ssh", () => {
-    const remotes = `origin  git@github.com:rkotze/git-ease.git (fetch)
-origin  git@github.com:rkotze/git-ease.git (push)`;
-    const remoteInfo = buildRemoteInfo(remotes);
+    const remotes = [
+      "origin git@github.com:rkotze/git-ease.git  (fetch)",
+      "origin git@github.com:rkotze/git-ease.git  (push)",
+    ].join("\n");
+    const remoteInfo = gitRemotes(remotes);
 
     expect(remoteInfo).toHaveLength(1);
     expect(remoteInfo[0]).toEqual({
@@ -16,10 +18,12 @@ origin  git@github.com:rkotze/git-ease.git (push)`;
   });
 
   it("build remote info from https", () => {
-    const remotes = `origin  https://github.com/rkotze/git-ease.git (fetch)
-origin  https://github.com/rkotze/git-ease.git (push)`;
+    const remotes = [
+      "origin https://github.com/rkotze/git-ease.git  (fetch)",
+      "origin https://github.com/rkotze/git-ease.git  (push)",
+    ].join("\n");
 
-    expect(buildRemoteInfo(remotes)[0]).toEqual({
+    expect(gitRemotes(remotes)[0]).toEqual({
       name: "origin",
       ssh: "git@github.com:rkotze/git-ease.git",
       https: "https://github.com/rkotze/git-ease.git",

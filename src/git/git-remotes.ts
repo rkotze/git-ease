@@ -1,8 +1,8 @@
-export function buildRemoteInfo(gitResponse: string): Array<RemoteInfo> {
-  const list = gitResponse.split("\n");
+export function gitRemotes(gitResponse: string): Array<RemoteInfo> {
+  const list = gitResponse.trim().split("\n");
   const remotes = new Map();
   for (const remote of list) {
-    const [name, _, value, _action] = remote.split(" ");
+    const [name, value, _action] = remote.split(/\s/i);
     if (!remotes.has(name)) {
       let ssh = "";
       let https = "";
