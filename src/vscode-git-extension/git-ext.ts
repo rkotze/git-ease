@@ -14,10 +14,14 @@ export class GitExt {
   }
 
   get rootPath() {
-    if (!this.hasRepositories) {return null;}
+    if (!this.hasRepositories) {
+      return null;
+    }
 
     const selected = this.selectedRepository;
-    if (!selected) {return this.repositories[0].rootUri.fsPath;}
+    if (!selected) {
+      return this.repositories[0].rootUri.fsPath;
+    }
 
     return selected.rootUri.fsPath;
   }
@@ -31,18 +35,26 @@ export class GitExt {
   }
 
   get selectedRepository() {
-    if (this.repositories.length === 1) {return this.repositories[0];}
+    if (this.repositories.length === 1) {
+      return this.repositories[0];
+    }
     return this.repositories.find((repo: Repository) => repo.ui.selected);
   }
 
   updateSelectedInput(value: (message: string) => string) {
     const repo = this.selectedRepository;
-    if(!repo) {return;}
+    if (!repo) {
+      return;
+    }
     if (typeof value === "function") {
       repo.inputBox.value = value(repo.inputBox.value);
     } else {
       repo.inputBox.value = value;
     }
+  }
+
+  onRepoChange(repoChangedCallback: Function) {
+    this.selectedRepository?.state.onDidChange((e) => repoChangedCallback());
   }
 
   onDidChangeUiState(stateChangeCallback: Function) {

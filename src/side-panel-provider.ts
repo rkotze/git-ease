@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
 import { getNonce } from "./get-nonce";
-import { watchForCommit } from "./git/watch-for-commit";
 import { copyCommitToInput } from "./messages/copy-commit-to-input";
 import { gitLog } from "./messages/git-log";
+import { GitExt } from "./vscode-git-extension/git-ext";
 
 export class SidePanelProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
@@ -33,10 +33,9 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
         case "copyCommitToInput":
           return copyCommitToInput(data.args[0]);
         case "panelReady":
-          watchForCommit(function () {
-            setTimeout(function () {
-              gitLog(webviewView);
-            }, 500);
+          const gitExt = new GitExt();
+          gitExt.onRepoChange(function () {
+            gitLog(webviewView);
           });
           return gitLog(webviewView);
       }
