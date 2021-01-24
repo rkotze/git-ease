@@ -10,6 +10,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Refresh panel action
 - Support for co-author meta in message
+- Link to remote repository issues (GitHub, enterprise GitHub and Bit Bucket)
+- Link to remote repository commits (GitHub and enterprise GitHub)
 
 ### Fixed
 
