@@ -5,7 +5,7 @@ import { gitLog } from "./messages/git-log";
 import { GitExt } from "./vscode-git-extension/git-ext";
 
 export class SidePanelProvider implements vscode.WebviewViewProvider {
-  _view?: vscode.WebviewView;
+  view?: vscode.WebviewView;
   _doc?: vscode.TextDocument;
 
   constructor(private readonly _extensionUri: vscode.Uri) {}
@@ -15,7 +15,7 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
     context: vscode.WebviewViewResolveContext,
     _token: vscode.CancellationToken
   ) {
-    this._view = webviewView;
+    this.view = webviewView;
 
     webviewView.webview.options = {
       // Allow scripts in the webview

@@ -35,7 +35,23 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [],
+    "commands": [
+      {
+        "command": "git-ease.refresh-panel",
+        "title": "Refresh Git log",
+        "category": "Git Ease",
+        "icon": "$(refresh)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "git-ease.refresh-panel",
+          "when": "view == git-ease.scm-panel",
+          "group": "navigation"
+        }
+      ]
+    },
     "views": {
       "scm": [
         {
