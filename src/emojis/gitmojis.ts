@@ -204,6 +204,13 @@ export const gitMojies: Array<Emojis> = [
     name: "pencil2",
   },
   {
+    emoji: "📝",
+    entity: "&#x1f4dd;",
+    code: ":pencil:",
+    description: "Writing docs. [deprecated]",
+    name: "pencil",
+  },
+  {
     emoji: "💩",
     entity: "&#58613;",
     code: ":poop:",
