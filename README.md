@@ -25,6 +25,7 @@ For now clone and package the project using `vsce`.
 ## Features
 
 - View easy to read Git log
+  - Supports `co-authored-by` meta data
 - Support Git emojis
 - Copy previous commit messages 
 
