@@ -3,7 +3,13 @@
 
   export let date;
   export let hash;
+  export let origin;
 </script>
+
+<p class="metadata">
+  <a href={`${origin.url}/commit/${hash}`} class="hash">{hash.slice(0, 7)}</a>
+  <span class="date">{dateFormat(date, "d mmm yyyy HH:MM:ss")}</span>
+</p>
 
 <style>
   :global(.vscode-dark) .metadata {
@@ -24,8 +30,3 @@
     font-family: "Courier New", Courier, monospace;
   }
 </style>
-
-<p class="metadata">
-  <span class="hash">{hash.slice(0, 7)}</span>
-  <span class="date">{dateFormat(date, 'd mmm yyyy HH:MM:ss')}</span>
-</p>

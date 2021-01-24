@@ -81,7 +81,7 @@
         {/if}
       {/each}
     </p>
-    <CommitMeta date={commit.date} hash={commit.hash} />
+    <CommitMeta date={commit.date} hash={commit.hash} origin={getOrigin()} />
     <CommitAuthors author={commit.author} coAuthors={commit.coAuthors} />
   </div>
 </li>
