@@ -21,9 +21,10 @@ Introduce a clean and interactive UI for viewing the Git log in VS Code SCM pane
 
 ## Install
 
-Coming soon.
+Download the latest `.vsix` file in [releases](https://github.com/rkotze/git-ease/releases) assets.
 
-For now clone and package the project using `vsce`.
+Read my tweet for [manual install instructions](https://twitter.com/richardkotze/status/1351109236189761536?s=20).
+
 ## Features
 
 - View easy to read Git log
