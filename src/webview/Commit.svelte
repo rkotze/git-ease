@@ -44,8 +44,8 @@
 </script>
 
 <li class="commit">
-  <div class="action-bar-toggle">
-    <div class="title" on:click={toggleFullCommit}>
+  <div class="action-bar-toggle" on:click={toggleFullCommit}>
+    <div class="title">
       {parseMojis(commit.title)}
     </div>
     <div class="actions">
@@ -89,6 +89,9 @@
 </li>
 
 <style>
+  :global(.vscode-dark) li.commit {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
   :global(.vscode-dark) li.commit:hover {
     background-color: rgba(255, 255, 255, 0.06);
   }
@@ -97,6 +100,10 @@
   }
   :global(.vscode-dark) li.commit :global(.octicon) {
     fill: #ccc;
+  }
+
+  :global(.vscode-light) li.commit {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
   }
   :global(.vscode-light) li.commit:hover {
     background-color: rgba(0, 0, 0, 0.06);
@@ -109,7 +116,7 @@
   }
 
   li.commit {
-    margin-top: 2px;
+    padding: 2px 0;
     overflow-wrap: break-word;
     word-wrap: break-word;
 
@@ -149,10 +156,6 @@
     flex: 1 70%;
   }
 
-  li.commit .title:hover {
-    cursor: pointer;
-  }
-
   li.commit .actions {
     padding: 4px 8px;
     flex-shrink: 0;
@@ -183,6 +186,9 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+  }
+  li.commit .action-bar-toggle:hover {
+    cursor: pointer;
   }
 
   li.commit .full-commit {
