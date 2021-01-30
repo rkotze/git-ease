@@ -4,6 +4,20 @@ All notable changes to the "git-ease" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## in progress
+
+### Added
+
+- New layout change to messages
+  - Commit author icon moved to second row
+  - Micro data font larger
+  - Full message item clickable to expand message details
+### Fixed
+
+- Sometimes the commit log will not render.
+  - Only listen to messages when component is ready
+  - Don't link to remote when remote data has not been resolved
+
 ## 0.1.0
 
 ### Added
