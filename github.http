@@ -1,0 +1,14 @@
+GET https://api.github.com/search/users?q=richard kotze
+Accept: application/vnd.github.v3+json
+Authorization: token {{githubkey}}
+
+### user information
+
+GET https://api.github.com/users/rkotze
+Accept: application/vnd.github.v3+json
+Authorization: token {{githubkey}}
+
+### Pull requests
+
+GET https://api.github.com/repos/microsoft/vscode/pulls?state=open
+Accept: application/vnd.github.v3+json
