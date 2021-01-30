@@ -1,8 +1,15 @@
 <script>
+  import { onMount } from "svelte";
+
   import Commit from "./Commit.svelte";
   let log = [];
   let remotes = [];
-  window.addEventListener("message", (event) => {
+  onMount(() => {
+    window.addEventListener("message", listenForMessages);
+    return () => window.removeEventListener("message", listenForMessages);
+  });
+
+  function listenForMessages(event) {
     const message = event.data;
     if (message.command === "gitRemotes") {
       remotes = message.data;
@@ -11,7 +18,7 @@
     if (message.command === "commitList") {
       log = message.data;
     }
-  });
+  }
 </script>
 
 <ul>
