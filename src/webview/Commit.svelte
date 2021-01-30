@@ -46,13 +46,6 @@
 <li class="commit">
   <div class="action-bar-toggle">
     <div class="title" on:click={toggleFullCommit}>
-      <span class="author-border">
-        <span
-          class="author"
-          title={`${commit.author.name} <${commit.author.email}>`}
-          >{commit.author.initials}</span
-        >
-      </span>
       {parseMojis(commit.title)}
     </div>
     <div class="actions">
@@ -65,6 +58,13 @@
       </button>
     </div>
     <div class="micro-info">
+      <span class="author-border">
+        <span
+          class="author"
+          title={`${commit.author.name} <${commit.author.email}>`}
+          >{commit.author.initials}</span
+        >
+      </span>
       <Badge type="clear">{relativeDate(commit.date)}</Badge>
       {#if commit.branch}
         <Badge type="green">{commit.branch}</Badge>
@@ -92,19 +92,19 @@
   :global(.vscode-dark) li.commit:hover {
     background-color: rgba(255, 255, 255, 0.06);
   }
-  :global(.vscode-dark) li.commit .title .author {
+  :global(.vscode-dark) li.commit .author {
     background-color: #222;
   }
-  :global(.vscode-dark) li.commit .actions :global(.octicon) {
+  :global(.vscode-dark) li.commit :global(.octicon) {
     fill: #ccc;
   }
   :global(.vscode-light) li.commit:hover {
     background-color: rgba(0, 0, 0, 0.06);
   }
-  :global(.vscode-light) li.commit .title .author {
+  :global(.vscode-light) li.commit .author {
     background-color: #eee;
   }
-  :global(.vscode-light) li.commit .actions :global(.octicon) {
+  :global(.vscode-light) li.commit :global(.octicon) {
     fill: #222;
   }
 
@@ -122,23 +122,23 @@
     hyphens: auto;
   }
 
-  li.commit .title .author {
+  li.commit .micro-info .author {
     display: inline-block;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
+    width: 16px;
+    height: 16px;
+    line-height: 17px;
     text-align: center;
     font-size: 0.8em;
   }
-
-  li.commit .author-border {
+  li.commit .micro-info .author-border {
     display: inline-block;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     background: linear-gradient(to right, red, purple);
     padding: 1px;
+    margin-bottom: 2px;
   }
 
   li.commit .title {
@@ -196,10 +196,10 @@
   }
 
   li.commit .micro-info {
-    font-size: 0.6em;
+    font-size: 0.8em;
     flex: 1 100%;
-    margin: 0 0 0 35px;
-    letter-spacing: 1px;
-    line-height: 1.8em;
+    margin: 0;
+    padding: 0 8px;
+    line-height: 16px;
   }
 </style>
