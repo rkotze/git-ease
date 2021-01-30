@@ -7,7 +7,11 @@
 </script>
 
 <p class="metadata">
-  <a href={`${origin.url}/commit/${hash}`} class="hash">{hash.slice(0, 7)}</a>
+  {#if origin}
+    <a href={`${origin.url}/commit/${hash}`} class="hash">{hash.slice(0, 7)}</a>
+  {:else}
+    {hash.slice(0, 7)}
+  {/if}
   <span class="date">{dateFormat(date, "d mmm yyyy HH:MM:ss")}</span>
 </p>
 

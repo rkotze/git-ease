@@ -34,6 +34,7 @@
   const matchIssueRegex = /(#)([0-9]+)/i;
   function linkIssue(text) {
     const origin = getOrigin();
+    if (!origin) return text;
     return text.replace(matchIssueRegex, function (_match, g1, g2) {
       return `<a href="${
         origin.url
@@ -58,7 +59,8 @@
       <button
         class="octicon button"
         on:click={copyMessage}
-        title="Copy commit message to input box">
+        title="Copy commit message to input box"
+      >
         {@html octicons["inbox"].toSVG()}
       </button>
     </div>
