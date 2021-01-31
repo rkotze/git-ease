@@ -18,7 +18,8 @@
     open = !open;
   }
 
-  function copyMessage() {
+  function copyMessage(evt) {
+    evt.stopPropagation();
     const message = [commit.title, commit.body].join("\n");
     vscode.postMessage({
       command: CommandNames.COPY_COMMIT_TO_INPUT,
