@@ -1,13 +1,13 @@
 <script>
   import octicons from "@primer/octicons";
   import relativeDate from "tiny-relative-date";
-
   import { getContext } from "svelte";
-  import { parseMojis } from "./parse-mojis";
 
+  import { parseMojis } from "./parse-mojis";
   import Badge from "./Badge.svelte";
   import CommitAuthors from "./Commit-authors.svelte";
   import CommitMeta from "./Commit-meta.svelte";
+  import { CommandNames } from "../command-names";
 
   export let commit;
   export let remotes;
@@ -20,7 +20,10 @@
 
   function copyMessage() {
     const message = [commit.title, commit.body].join("\n");
-    vscode.postMessage({ command: "copyCommitToInput", args: [message] });
+    vscode.postMessage({
+      command: CommandNames.COPY_COMMIT_TO_INPUT,
+      args: [message],
+    });
   }
 
   function getOrigin() {

@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { CommandNames } from "./command-names";
 import { getNonce } from "./get-nonce";
 import { copyCommitToInput } from "./messages/copy-commit-to-input";
 import { gitLog } from "./messages/git-log";
@@ -29,11 +30,11 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
 
     webviewView.webview.onDidReceiveMessage(async (data) => {
       switch (data.command) {
-        case "commitList":
+        case CommandNames.COMMIT_LIST:
           return gitLog(webviewView);
-        case "copyCommitToInput":
+        case CommandNames.COPY_COMMIT_TO_INPUT:
           return copyCommitToInput(data.args[0]);
-        case "panelReady":
+        case CommandNames.PANEL_READY:
           const gitExt = new GitExt();
           gitExt.onRepoChange(function () {
             gitLog(webviewView);

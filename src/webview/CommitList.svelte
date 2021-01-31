@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
 
   import Commit from "./Commit.svelte";
+  import { CommandNames } from "../command-names";
+
   let log = [];
   let remotes = [];
   onMount(() => {
@@ -11,11 +13,11 @@
 
   function listenForMessages(event) {
     const message = event.data;
-    if (message.command === "gitRemotes") {
+    if (message.command === CommandNames.GIT_REMOTES) {
       remotes = message.data;
     }
 
-    if (message.command === "commitList") {
+    if (message.command === CommandNames.COMMIT_LIST) {
       log = message.data;
     }
   }
