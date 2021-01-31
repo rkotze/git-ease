@@ -64,7 +64,7 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
 				<link href="${styleMainUri}" rel="stylesheet">
 			</head>
       <body>
-        <div id="app">
+        <div id="git-ease-app">
         </div>
         <script nonce="${nonce}" src="${webviewUri}">
         </script>
