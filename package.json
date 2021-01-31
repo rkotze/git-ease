@@ -1,7 +1,7 @@
 {
   "name": "git-ease",
-  "displayName": "Git Ease",
-  "description": "Making it easy to make good commits",
+  "displayName": "Git Ease - fancy UI",
+  "description": "Improve linking Git repositories to its remotes in VS Code.",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.51.0"
@@ -16,6 +16,17 @@
     "name": "Richard Kotze",
     "email": "richkotze@outlook.com"
   },
+  "license": "MIT",
+  "keywords": [
+    "git",
+    "co-authors",
+    "git-log",
+    "author",
+    "annotation",
+    "github",
+    "commit",
+    "emojis"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/rkotze/git-ease.git"
