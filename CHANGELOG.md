@@ -6,6 +6,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## in progress
 
+## 0.2.0
 ### Added
 
 - New layout change to messages
