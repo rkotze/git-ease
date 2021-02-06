@@ -8,6 +8,8 @@
   import CommitAuthors from "./Commit-authors.svelte";
   import CommitMeta from "./Commit-meta.svelte";
   import { CommandNames } from "../command-names";
+  import CommitBody from "./Commit-body.svelte";
+  import { getOrigin } from "./get-origin";
 
   export let commit;
   export let remotes;
@@ -24,25 +26,6 @@
     vscode.postMessage({
       command: CommandNames.COPY_COMMIT_TO_INPUT,
       args: [message],
-    });
-  }
-
-  function getOrigin() {
-    const origin = remotes.find(({ name }) => name === "origin");
-    if (!origin) {
-      return remotes[0];
-    }
-    return origin;
-  }
-
-  const matchIssueRegex = /(#)([0-9]+)/i;
-  function linkIssue(text) {
-    const origin = getOrigin();
-    if (!origin) return text;
-    return text.replace(matchIssueRegex, function (_match, g1, g2) {
-      return `<a href="${
-        origin.url
-      }/issues/${g2}" target="_blank">${g1 + g2}</a>`;
     });
   }
 </script>
@@ -77,17 +60,12 @@
   </div>
 
   <div class="full-commit" class:open>
-    <p class="body">
-      <strong>{commit.title}</strong><br />
-      {#each commit.body.split("\n") as newline}
-        {#if matchIssueRegex.test(newline)}
-          {@html linkIssue(newline)}<br />
-        {:else}
-          {newline}<br />
-        {/if}
-      {/each}
-    </p>
-    <CommitMeta date={commit.date} hash={commit.hash} origin={getOrigin()} />
+    <CommitBody {remotes} title={commit.title} body={commit.body} />
+    <CommitMeta
+      date={commit.date}
+      hash={commit.hash}
+      origin={getOrigin(remotes)}
+    />
     <CommitAuthors author={commit.author} coAuthors={commit.coAuthors} />
   </div>
 </li>
