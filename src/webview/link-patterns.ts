@@ -1,15 +1,12 @@
 export function linkPattern(patterns, text) {
   return patterns.reduce((newText, { pattern, urlFormat, textFormat }) => {
-    return (
-      newText +
-      text.replace(pattern, (_match, ...args) => {
-        return `<a href="${format(urlFormat, args)}">${format(
-          textFormat,
-          args
-        )}</a>`;
-      })
-    );
-  }, "");
+    return newText.replace(pattern, (_match, ...args) => {
+      return `<a href="${format(urlFormat, args)}">${format(
+        textFormat,
+        args
+      )}</a>`;
+    });
+  }, text);
 }
 
 function format(text, values) {
