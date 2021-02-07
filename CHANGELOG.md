@@ -6,9 +6,17 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## in progress
 
-## 0.2.0
+## 0.3.0
+
 ### Added
 
+- Provide custom link patterns to find codes in commit messages and link to external sources. For example link to Jira issues, Trello cards, Asana.
+
+## 0.2.0
+
+### Added
+
+- Find patterns in message and link to remote issues e.g. GitHub issues if #1 is found.
 - New layout change to messages
   - Commit author icon moved to second row
   - Micro data font larger

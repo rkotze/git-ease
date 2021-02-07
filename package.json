@@ -1,12 +1,13 @@
 {
   "name": "git-ease",
   "displayName": "Git Ease - fancy UI",
-  "description": "Improve linking Git repositories to its remotes in VS Code.",
+  "description": "Improve linking from Git repositories to external sources",
   "version": "0.2.0",
   "engines": {
     "vscode": "^1.51.0"
   },
   "publisher": "RichardKotze",
+  "preview": true,
   "icon": "resources/git-ease.png",
   "galleryBanner": {
     "color": "#232323",
@@ -25,7 +26,9 @@
     "annotation",
     "github",
     "commit",
-    "emojis"
+    "emojis",
+    "jira",
+    "link"
   ],
   "repository": {
     "type": "git",

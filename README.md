@@ -2,7 +2,7 @@
 
 The idea is very much **WIP**.
 
-> Improve linking Git repositories to its remotes in VS Code.
+> Improve linking from Git repositories to external sources.
 
 ### Problem
 
@@ -16,10 +16,13 @@ Introduce a clean and interactive UI for viewing the Git log in VS Code SCM pane
 
 1. [Install](#install)
 1. [Features](#features)
+1. [Settings](#settings)
 
-<img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/105635259-edd21300-5e59-11eb-896f-8c06d8befc65.png" width="300" />
+<img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/107157153-75e80a80-697a-11eb-965d-ecfcb1b485e5.png" width="350" />
 
 ## Install
+
+Type **"Git-Ease"** in extensions panel or online marketplace.
 
 Download the latest `.vsix` file in [releases](https://github.com/rkotze/git-ease/releases) assets.
 
@@ -31,6 +34,32 @@ Read my tweet for [manual install instructions](https://twitter.com/richardkotze
   - Supports `co-authored-by` meta data
 - Support Git emojis
 - Copy previous commit messages
-- Commit messages link to remote repository **issues** (GitHub, enterprise GitHub and Bit Bucket)
+- Link to remote repository **issues** (GitHub, enterprise GitHub and Bit Bucket) Example: Scans for #1 and links to issue 1
 - Link to remote repository **commits** (GitHub and enterprise GitHub)
+- Link to project management tools like Jira by providing custom Regex patterns. See settings how to setup.
 
+## Settings
+
+### Commit log -> linkPatterns
+
+`gitEase.log.linkPatterns`
+
+`Default: []`
+
+Configurable in JSON settings only
+
+Provide three properties pre pattern to find custom patterns in the commit log to link from.
+
+- `pattern` = Regex format as a string. Regex groups are needed to match with format numbers
+- `urlFormat` = Url to source like Jira issue. Number will be replaced by matching Regex group
+- `textFormat` = Text to display. Number will be replaced by matching Regex group
+
+Jira example:
+
+```json
+[{
+  "pattern": "(GE-[0-9]+)",
+  "urlFormat": "https://jira.com/browse/{0}",
+  "textFormat": "{0}",
+}]
+```
