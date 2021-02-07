@@ -1,19 +1,13 @@
 <script>
   import { getOrigin } from "./get-origin";
   import { linkPattern } from "./link-patterns";
+  import { writeLinkPatterns } from "./stores/write-link-patterns";
 
   export let title;
   export let body;
   export let remotes;
-  export let configLinkPatterns = [];
 
-  let patterns = configLinkPatterns.map(
-    ({ pattern, urlFormat, textFormat }) => ({
-      pattern: new RegExp(pattern, "i"),
-      urlFormat,
-      textFormat,
-    })
-  );
+  let patterns = $writeLinkPatterns;
 
   const origin = getOrigin(remotes);
   if (origin) {

@@ -13,7 +13,6 @@
 
   export let commit;
   export let remotes;
-  export let configLinkPatterns;
 
   const vscode = getContext("vscode");
   let open = false;
@@ -61,12 +60,7 @@
   </div>
 
   <div class="full-commit" class:open>
-    <CommitBody
-      {configLinkPatterns}
-      {remotes}
-      title={commit.title}
-      body={commit.body}
-    />
+    <CommitBody {remotes} title={commit.title} body={commit.body} />
     <CommitMeta
       date={commit.date}
       hash={commit.hash}

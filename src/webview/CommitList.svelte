@@ -3,10 +3,10 @@
 
   import Commit from "./Commit.svelte";
   import { CommandNames } from "../command-names";
+  import { writeLinkPatterns } from "./stores/write-link-patterns";
 
   let log = [];
   let remotes = [];
-  let configLinkPatterns = [];
   onMount(() => {
     window.addEventListener("message", listenForMessages);
     return () => window.removeEventListener("message", listenForMessages);
@@ -23,13 +23,13 @@
     }
 
     if (message.command === CommandNames.CONFIG_LINK_PATTERNS) {
-      configLinkPatterns = message.data;
+      writeLinkPatterns.write(message.data);
     }
   }
 </script>
 
 <ul>
   {#each log as commit}
-    <Commit {commit} {remotes} {configLinkPatterns} />
+    <Commit {commit} {remotes} />
   {/each}
 </ul>

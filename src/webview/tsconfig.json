@@ -2,6 +2,7 @@
   "compilerOptions": {
     "types": ["jest", "svelte"],
     "target": "es6",
+    "moduleResolution": "node",
   },
   "include": ["./**/*", ],
   "exclude": ["../../node_modules/*"]
