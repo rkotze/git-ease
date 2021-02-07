@@ -4,6 +4,7 @@ import { getNonce } from "./get-nonce";
 import { copyCommitToInput } from "./messages/copy-commit-to-input";
 import { gitLog } from "./messages/git-log";
 import { gitRemotesList } from "./messages/git-remotes-list";
+import { linkPatternList } from "./messages/link-pattern-list";
 import { GitExt } from "./vscode-git-extension/git-ext";
 
 export class SidePanelProvider implements vscode.WebviewViewProvider {
@@ -40,6 +41,7 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
             gitLog(webviewView);
           });
           gitRemotesList(webviewView);
+          linkPatternList(webviewView);
           return gitLog(webviewView);
       }
     });

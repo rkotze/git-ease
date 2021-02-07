@@ -46,6 +46,16 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Git Ease",
+      "properties": {
+        "gitEase.log.linkPatterns": {
+          "type": "array",
+          "default": [],
+          "description": "Define regex patterns in git log and link to external sources"
+        }
+      }
+    },
     "commands": [
       {
         "command": "git-ease.refresh-panel",
