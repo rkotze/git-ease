@@ -1,6 +1,6 @@
 # <img src="https://user-images.githubusercontent.com/10452163/104818888-310d0000-5822-11eb-8d37-89d917672783.png" width="80" alt="Git ease" /> Git-ease
 
-The idea is very much **WIP**.
+![](https://vsmarketplacebadge.apphb.com/installs/RichardKotze.git-ease.svg) [![](https://vsmarketplacebadge.apphb.com/downloads-short/RichardKotze.git-ease.svg)](https://marketplace.visualstudio.com/items?itemName=RichardKotze.git-ease.svg)
 
 > Improve linking from Git repositories to external sources.
 
@@ -22,11 +22,11 @@ Introduce a clean and interactive UI for viewing the Git log in VS Code SCM pane
 
 ## Install
 
-Type **"Git-Ease"** in extensions panel or online marketplace.
+Type **"Git-Ease"** in VS Code extensions panel or VS Code marketplace [Git Ease](https://marketplace.visualstudio.com/items?itemName=RichardKotze.git-ease).
 
-Download the latest `.vsix` file in [releases](https://github.com/rkotze/git-ease/releases) assets.
+~Download the latest `.vsix` file in [releases](https://github.com/rkotze/git-ease/releases) assets.~
 
-Read my tweet for [manual install instructions](https://twitter.com/richardkotze/status/1351109236189761536?s=20).
+~Read my tweet for [manual install instructions](https://twitter.com/richardkotze/status/1351109236189761536?s=20).~
 
 ## Features
 
