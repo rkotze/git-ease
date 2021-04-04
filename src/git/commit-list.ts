@@ -33,6 +33,22 @@ function extractCoAuthors(authorString: string): Author | undefined {
   }
 }
 
+function containsTrackedSymbol(item: string): boolean {
+  return "MADRCU".includes(item) && item.length === 1;
+}
+
+const trackedFilePattern = /^([M|A|D|R|C|U])\s+(.*)/;
+
+function extractFiles(text: string): TrackedFile | undefined {
+  const fileArray = text.match(trackedFilePattern);
+  if (fileArray?.length === 3 && containsTrackedSymbol(fileArray[1])) {
+    return {
+      change: fileArray[1] as TrackedChangeSymbol,
+      path: fileArray[2],
+    };
+  }
+}
+
 function buildCommit(commit: string): Commit {
   const initialCommit: Commit = {
     title: "",
@@ -41,6 +57,7 @@ function buildCommit(commit: string): Commit {
     author: { name: "", email: "", initials: "" },
     date: new Date(),
     coAuthors: [],
+    files: [],
   };
 
   const splitCommit = cleanCommitSplit(commit);
@@ -73,6 +90,13 @@ function buildCommit(commit: string): Commit {
     if (item.includes("Date:")) {
       acc.date = new Date(matched(item.match(/Date:\s+(.*)/)));
       return acc;
+    }
+    if (trackedFilePattern.test(item)) {
+      const file = extractFiles(item);
+      if (file) {
+        acc.files.push(file);
+        return acc;
+      }
     }
     if (!acc.title) {
       acc.title = item;

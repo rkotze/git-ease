@@ -38,6 +38,19 @@ describe("Build commit list", () => {
     ]);
   });
 
+  test("commit files", () => {
+    expect(list[0].files).toEqual([
+      {
+        path: "package-lock.json",
+        change: "M",
+      },
+      {
+        path: "package.json",
+        change: "M",
+      },
+    ]);
+  });
+
   test("merge commit has property", () => {
     expect(list[2]).toMatchObject({
       merge: "3efd6a5 c20cf5b",
@@ -83,11 +96,17 @@ Date:   Sat Nov 21 21:38:19 2020 +0000
     Co-authored-by: John Doe <john.doe@unknown.com>
     Co-authored-by: Jane Doe <jane.doe@somewhere.co.uk>
 
+    M package-lock.json
+    M package.json
+
 commit d73e69a759580ac04f4204b7dcf11604c7953a99 (HEAD -> trunk)
 Author: Random Sally <random.sally@example.com>
 Date:   Sat Nov 21 17:23:20 2020 +0000
 
     Setup webpack config for node and web modules
+
+    M src/index.js
+    A src/random/file.ts
 
 commit 74d7854aab87da26a5687967fefc8428527481f3
 Merge: 3efd6a5 c20cf5b
@@ -100,6 +119,10 @@ Date:   Sun Jul 21 20:27:06 2019 +0100
     on the repo you are working on. This command makes it as easy as
     possible to add an existing author from the current repo to your list of
     coauthors.
+
+    M src/index.js
+    A src/random/file.ts
+    D src/bla/something.css
 
 commit 77c77ee083b60ff88e8c2bf97acb4d4df575d9ff (cjlarose/compute-template-path-using-top-level-dir, compute-template-path-using-top-level-dir)
 Author: Chris LaRose <cjlarose@gmail.com>
