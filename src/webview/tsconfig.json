@@ -1,9 +1,9 @@
-{  
+{
   "compilerOptions": {
     "types": ["jest", "svelte"],
     "target": "es6",
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   },
-  "include": ["./**/*", ],
+  "include": ["./**/*"],
   "exclude": ["../../node_modules/*"]
 }
