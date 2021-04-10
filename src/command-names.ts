@@ -4,4 +4,5 @@ export enum CommandNames {
   PANEL_READY = "panelReady",
   COPY_COMMIT_TO_INPUT = "copyCommitToInput",
   CONFIG_LINK_PATTERNS = "ConfigLinkPatterns",
+  OPEN_FILE = "openFile",
 }

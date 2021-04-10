@@ -5,6 +5,7 @@ import { copyCommitToInput } from "./messages/copy-commit-to-input";
 import { gitLog } from "./messages/git-log";
 import { gitRemotesList } from "./messages/git-remotes-list";
 import { linkPatternList } from "./messages/link-pattern-list";
+import { openFile } from "./messages/open-file";
 import { GitExt } from "./vscode-git-extension/git-ext";
 
 export class SidePanelProvider implements vscode.WebviewViewProvider {
@@ -35,6 +36,8 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
           return gitLog(webviewView);
         case CommandNames.COPY_COMMIT_TO_INPUT:
           return copyCommitToInput(data.args[0]);
+        case CommandNames.OPEN_FILE:
+          return openFile(data.args[0]);
         case CommandNames.PANEL_READY:
           const gitExt = new GitExt();
           gitExt.onRepoChange(function () {
