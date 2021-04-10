@@ -10,6 +10,7 @@
   import { CommandNames } from "../command-names";
   import CommitBody from "./Commit-body.svelte";
   import { getOrigin } from "./get-origin";
+  import CommitFiles from "./Commit-files.svelte";
 
   export let commit;
   export let remotes;
@@ -67,6 +68,7 @@
       origin={getOrigin(remotes)}
     />
     <CommitAuthors author={commit.author} coAuthors={commit.coAuthors} />
+    <CommitFiles files={commit.files} />
   </div>
 </li>
 
