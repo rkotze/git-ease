@@ -11,6 +11,7 @@
   import CommitBody from "./Commit-body.svelte";
   import { getOrigin } from "./get-origin";
   import CommitFiles from "./Commit-files.svelte";
+  import ButtonIcon from "./Button-icon.svelte";
 
   export let commit;
   export let remotes;
@@ -37,13 +38,11 @@
       {parseMojis(commit.title)}
     </div>
     <div class="actions">
-      <button
-        class="octicon button"
+      <ButtonIcon
+        iconName="inbox"
         on:click={copyMessage}
         title="Copy commit message to input box"
-      >
-        {@html octicons["inbox"].toSVG()}
-      </button>
+      />
     </div>
     <div class="micro-info">
       <span class="author-border">
@@ -82,9 +81,6 @@
   :global(.vscode-dark) li.commit .author {
     background-color: #222;
   }
-  :global(.vscode-dark) li.commit :global(.octicon) {
-    fill: #ccc;
-  }
 
   :global(.vscode-light) li.commit {
     border-top: 1px solid rgba(0, 0, 0, 0.06);
@@ -94,9 +90,6 @@
   }
   :global(.vscode-light) li.commit .author {
     background-color: #eee;
-  }
-  :global(.vscode-light) li.commit :global(.octicon) {
-    fill: #222;
   }
 
   li.commit {
@@ -145,21 +138,6 @@
     flex-shrink: 0;
     margin-left: auto; /* using flex moves actions right */
     display: none;
-  }
-
-  li.commit .actions .button {
-    padding: 0 2px;
-    margin: 0 1px;
-    cursor: pointer;
-    display: inline-block;
-    background-color: transparent;
-    border: none;
-  }
-
-  li.commit .actions :global(.octicon) {
-    height: 16px;
-    width: 16px;
-    vertical-align: text-top;
   }
 
   li.commit:hover .actions {

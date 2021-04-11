@@ -5,4 +5,5 @@ export enum CommandNames {
   COPY_COMMIT_TO_INPUT = "copyCommitToInput",
   CONFIG_LINK_PATTERNS = "ConfigLinkPatterns",
   OPEN_FILE = "openFile",
+  OPEN_FILE_DIFF = "openFileDiff",
 }
