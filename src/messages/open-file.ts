@@ -1,5 +1,5 @@
-import { resolve, join } from "path";
-import { commands, Uri, window, workspace } from "vscode";
+import { join } from "path";
+import { Uri, window, workspace } from "vscode";
 import { GitExt } from "../vscode-git-extension/git-ext";
 
 export async function openFile(filePath: string): Promise<void> {

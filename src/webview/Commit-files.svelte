@@ -28,7 +28,9 @@
 </script>
 
 <div class="file-box">
-  <span class="file-box-label">Files:</span>
+  {#if files.length > 0}
+    <span class="file-box-label">Files:</span>
+  {/if}
 
   <ul class="file-list">
     {#each files as file}

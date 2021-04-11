@@ -6,6 +6,7 @@ import { gitLog } from "./messages/git-log";
 import { gitRemotesList } from "./messages/git-remotes-list";
 import { linkPatternList } from "./messages/link-pattern-list";
 import { openFile } from "./messages/open-file";
+import { openFileDiff } from "./messages/open-file-diff";
 import { GitExt } from "./vscode-git-extension/git-ext";
 
 export class SidePanelProvider implements vscode.WebviewViewProvider {
@@ -38,6 +39,8 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
           return copyCommitToInput(data.args[0]);
         case CommandNames.OPEN_FILE:
           return openFile(data.args[0]);
+        case CommandNames.OPEN_FILE_DIFF:
+          return openFileDiff(data.args[0], data.args[1]);
         case CommandNames.PANEL_READY:
           const gitExt = new GitExt();
           gitExt.onRepoChange(function () {
