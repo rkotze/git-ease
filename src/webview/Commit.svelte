@@ -68,7 +68,7 @@
       origin={getOrigin(remotes)}
     />
     <CommitAuthors author={commit.author} coAuthors={commit.coAuthors} />
-    <CommitFiles files={commit.files} />
+    <CommitFiles files={commit.files} commitRef={commit.hash} />
   </div>
 </li>
 

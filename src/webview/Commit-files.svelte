@@ -3,21 +3,28 @@
   import { CommandNames } from "../command-names";
 
   export let files = [];
+  export let commitRef = "";
   const vscode = getContext("vscode");
 
   function openFile(evt) {
     evt.stopPropagation();
     const path = evt.currentTarget.dataset.filePath;
+    const ref = evt.currentTarget.dataset.commitRef;
     vscode.postMessage({
       command: CommandNames.OPEN_FILE,
-      args: [path],
+      args: [path, ref],
     });
   }
 </script>
 
 <ul class="file-list">
   {#each files as file}
-    <li class="file-list-item" data-file-path={file.path} on:click={openFile}>
+    <li
+      class="file-list-item"
+      data-file-path={file.path}
+      data-commit-ref={commitRef}
+      on:click={openFile}
+    >
       <span class={`change change-${file.change}`}>{file.change}</span>&nbsp;
       {file.path}
     </li>

@@ -35,3 +35,10 @@ export async function history(): Promise<string> {
 export async function remote(): Promise<string> {
   return silentExec("git remote -v");
 }
+
+export async function commitFileText(
+  sha: string,
+  path: string
+): Promise<string> {
+  return silentExec(`git show ${sha}:${path}`);
+}
