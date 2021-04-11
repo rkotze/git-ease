@@ -6,6 +6,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## in progress
 
+## 0.4.0
+
+### Added
+
+- List changed files for relevant commit [Issue 11](https://github.com/rkotze/git-ease/issues/11)
+- Hover over file to reveal open file action. Click to open associated file.[Issue 11](https://github.com/rkotze/git-ease/issues/11)
+- Click on the file list time to open a diff view of changes made: [Issue 14](https://github.com/rkotze/git-ease/issues/14)
+
+![Commit file list](https://user-images.githubusercontent.com/10452163/114325307-447cee00-9b27-11eb-9a5c-9af020a75e35.png)
+
 ## 0.3.0
 
 ### Added

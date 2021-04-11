@@ -18,7 +18,7 @@ Introduce a clean and interactive UI for viewing the Git log in VS Code SCM pane
 1. [Features](#features)
 1. [Settings](#settings)
 
-<img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/107157153-75e80a80-697a-11eb-965d-ecfcb1b485e5.png" width="350" />
+<img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/114325414-f1576b00-9b27-11eb-9f69-753c6418a27c.png" width="350" />
 
 ## Install
 
@@ -37,6 +37,7 @@ Type **"Git-Ease"** in VS Code extensions panel or VS Code marketplace [Git Ease
 - Link to remote repository **issues** (GitHub, enterprise GitHub and Bit Bucket) Example: Scans for #1 and links to issue 1
 - Link to remote repository **commits** (GitHub and enterprise GitHub)
 - Link to project management tools like Jira by providing custom Regex patterns. See settings how to setup.
+- List file changes for a commit, open associated file and view file diff.
 
 ## Settings
 
