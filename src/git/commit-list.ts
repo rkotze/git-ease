@@ -58,6 +58,7 @@ function extractFiles(text: string): TrackedFile | undefined {
 function buildCommit(commit: string): Commit {
   const initialCommit: Commit = {
     title: "",
+    branch: [],
     body: "",
     hash: "",
     author: { name: "", email: "", initials: "" },
@@ -72,7 +73,7 @@ function buildCommit(commit: string): Commit {
       const branch = matched(item.match(/\((.*)\)/));
       acc.hash = matched(item.match(/(\w+)/));
       if (branch) {
-        acc.branch = branch;
+        acc.branch = branch.split(", ");
       }
       return acc;
     }

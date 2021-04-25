@@ -1,7 +1,7 @@
 type Commit = {
   hash: string;
   merge?: string;
-  branch?: string;
+  branch: string[];
   author?: Author;
   coAuthors: Author[];
   date: Date;

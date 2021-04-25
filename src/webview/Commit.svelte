@@ -53,9 +53,9 @@
         >
       </span>
       <Badge type="clear">{relativeDate(commit.date)}</Badge>
-      {#if commit.branch}
-        <Badge type="green">{commit.branch}</Badge>
-      {/if}
+      {#each commit.branch as tag}
+        <Badge type="green">{tag}</Badge>
+      {/each}
     </div>
   </div>
 

@@ -14,12 +14,12 @@ describe("Build commit list", () => {
   test("commit object with branch name", () => {
     expect(list[0]).toMatchObject({
       hash: "ad67ecf86dba7580820ec325d527efaffd8245fa",
-      branch: "HEAD -> trunk, origin/trunk",
+      branch: ["HEAD -> trunk", "origin/trunk"],
       title: "Build light and dark commit vs code styles webpack",
       date: new Date("Sat Nov 21 21:38:19 2020 +0000"),
     });
     expect(list[1]).toMatchObject({
-      branch: "HEAD -> trunk",
+      branch: ["HEAD -> trunk"],
     });
   });
 
@@ -70,6 +70,12 @@ describe("Build commit list", () => {
         filename: "file.ts",
       },
     ]);
+  });
+
+  test("commits without a branch or tag should have empty array", () => {
+    expect(list[2]).toMatchObject({
+      branch: [],
+    });
   });
 
   test("merge commit has property", () => {
