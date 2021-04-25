@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## in progress
 
+## 0.5.0
+
+- Show filename first and remaining path which will trim depending on panel width [Issue 16](https://github.com/rkotze/git-ease/issues/16)
+- Split branch and tags into own boxes [Issue 13](https://github.com/rkotze/git-ease/issues/13)
+
 ## 0.4.0
 
 ### Added

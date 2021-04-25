@@ -6,11 +6,11 @@
 
 ### Problem
 
-I find the current UI features in VS Code too limiting to represent Git features in a convenient way. There is also so many connected documents to Git repos (issues, PRs, etc) which i think can be more visible.
+I find the current UI features in VS Code too limiting to represent Git features in a convenient way. There is also so many connected documents to Git repos (issues, PRs, etc) which I think can be better linked from VS Code.
 
 ### Vision
 
-Introduce a clean and interactive UI for viewing the Git log in VS Code SCM panel.
+Introduce a clean and connected interface for viewing the Git and related documents in VS Code SCM panel.
 
 **Status** Currently building Alpha release
 
