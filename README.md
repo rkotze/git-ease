@@ -10,9 +10,9 @@ I find the current UI features in VS Code too limiting to represent Git features
 
 ### Vision
 
-Introduce a clean and connected interface for viewing the Git and related documents in VS Code SCM panel.
+Introduce a convenient and connected interface for viewing the Git log and related documents in VS Code SCM panel.
 
-**Status** Currently building Alpha release
+**Status** Currently building Beta release
 
 1. [Install](#install)
 1. [Features](#features)
@@ -36,8 +36,8 @@ Type **"Git-Ease"** in VS Code extensions panel or VS Code marketplace [Git Ease
 - Copy previous commit messages
 - Link to remote repository **issues** (GitHub, enterprise GitHub and Bit Bucket) Example: Scans for #1 and links to issue 1
 - Link to remote repository **commits** (GitHub and enterprise GitHub)
-- Link to project management tools like Jira by providing custom Regex patterns. See settings how to setup.
-- List file changes for a commit, open associated file and view file diff.
+- Link to project management tools like **Jira** by providing custom Regex patterns. See settings how to setup.
+- List **file changes** for a commit, **open file** and **view file diff**.
 
 ## Settings
 
