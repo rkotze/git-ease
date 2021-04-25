@@ -130,7 +130,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex: 1 70%;
+    flex: 1 0;
   }
 
   li.commit .actions {
