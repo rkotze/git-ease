@@ -27,4 +27,6 @@ type TrackedChangeSymbol = "M" | "A" | "D" | "R" | "C" | "U";
 type TrackedFile = {
   path: string;
   change: TrackedChangeSymbol;
+  dir: string;
+  filename: string;
 };

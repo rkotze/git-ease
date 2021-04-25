@@ -38,15 +38,36 @@ describe("Build commit list", () => {
     ]);
   });
 
-  test("commit files", () => {
+  test("commit files with no directory", () => {
     expect(list[0].files).toEqual([
       {
         path: "package-lock.json",
         change: "M",
+        filename: "package-lock.json",
+        dir: "",
       },
       {
         path: "package.json",
         change: "M",
+        filename: "package.json",
+        dir: "",
+      },
+    ]);
+  });
+
+  test("commit files which have a directory", () => {
+    expect(list[1].files).toEqual([
+      {
+        path: "src/index.js",
+        change: "M",
+        dir: "src",
+        filename: "index.js",
+      },
+      {
+        path: "src/random/file.ts",
+        change: "A",
+        dir: "src/random",
+        filename: "file.ts",
       },
     ]);
   });

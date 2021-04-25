@@ -30,37 +30,42 @@
 <div class="file-box">
   {#if files.length > 0}
     <span class="file-box-label">Files:</span>
-  {/if}
 
-  <ul class="file-list">
-    {#each files as file}
-      <li
-        class="file-list-item"
-        data-file-path={file.path}
-        data-commit-ref={commitRef}
-        on:click={openDiff}
-      >
-        <span class={`change change-${file.change}`}>{file.change}</span>&nbsp;
-        <span>{file.path}</span>
-        <span class="open-file"
-          ><ButtonIcon
-            data-file-path={file.path}
-            data-commit-ref={commitRef}
-            iconName="file-symlink-file"
-            title="Open file"
-            on:click={openFile}
-          /></span
+    <ul class="file-list">
+      {#each files as file}
+        <li
+          class="file-list-item"
+          data-file-path={file.path}
+          data-commit-ref={commitRef}
+          title={file.path}
+          on:click={openDiff}
         >
-      </li>
-    {/each}
-  </ul>
+          <span class={`change change-${file.change}`}>{file.change}</span
+          >&nbsp;
+          <span class="filename">{file.filename}</span>
+          <span class="dir">{file.dir}</span>
+          <span class="open-file"
+            ><ButtonIcon
+              data-file-path={file.path}
+              data-commit-ref={commitRef}
+              iconName="file-symlink-file"
+              title="Open file"
+              on:click={openFile}
+            /></span
+          >
+        </li>
+      {/each}
+    </ul>
+  {/if}
 </div>
 
 <style>
-  :global(.vscode-dark) .file-box-label {
+  :global(.vscode-dark) .file-box-label,
+  :global(.vscode-dark) .dir {
     color: #bbb;
   }
-  :global(.vscode-light) .file-box-label {
+  :global(.vscode-light) .file-box-label,
+  :global(.vscode-light) .dir {
     color: #555;
   }
   :global(.vscode-dark) .file-list-item:hover {
@@ -90,7 +95,6 @@
 
   .file-list-item .open-file {
     padding: 0;
-    flex-shrink: 0;
     margin-left: auto; /* using flex moves actions right */
     display: none;
     vertical-align: baseline;
@@ -98,6 +102,16 @@
 
   .file-list-item:hover .open-file {
     display: inline-flex;
+  }
+
+  .file-list-item .dir {
+    padding: 0;
+    margin-left: 6px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1 0;
   }
 
   .change {

@@ -42,9 +42,15 @@ const trackedFilePattern = /^([M|A|D|R|C|U])\s+(.*)/;
 function extractFiles(text: string): TrackedFile | undefined {
   const fileArray = text.match(trackedFilePattern);
   if (fileArray?.length === 3 && containsTrackedSymbol(fileArray[1])) {
+    const path = fileArray[2];
+    const splitPath = path.split("/");
+    const filename = splitPath.pop() || "";
+    const dir = splitPath.join("/");
     return {
       change: fileArray[1] as TrackedChangeSymbol,
-      path: fileArray[2],
+      path,
+      filename,
+      dir,
     };
   }
 }
