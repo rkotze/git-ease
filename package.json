@@ -99,7 +99,7 @@
     "packvsce": "vsce package"
   },
   "devDependencies": {
-    "@primer/octicons": "^11.1.0",
+    "@primer/octicons": "^13.0.0",
     "@types/glob": "^7.1.3",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.11.7",
