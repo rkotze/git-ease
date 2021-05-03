@@ -18,7 +18,7 @@ Introduce a convenient and connected interface for viewing the Git log and relat
 1. [Features](#features)
 1. [Settings](#settings)
 
-<img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/114325414-f1576b00-9b27-11eb-9f69-753c6418a27c.png" width="350" />
+<img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/116859516-03449f00-abf8-11eb-9d53-a3236db634ef.png" width="350" />
 
 ## Install
 
