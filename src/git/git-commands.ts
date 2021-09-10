@@ -25,8 +25,12 @@ function cmdOptions(): ExecOptionsWithStringEncoding {
   };
 }
 
-export async function history(): Promise<string> {
-  return silentExec("git log --decorate=short --name-status -n 100");
+export async function history(messageSearch?: string): Promise<string> {
+  let history = "git log --decorate=short --name-status -n 100";
+  if (messageSearch) {
+    history += ` --grep ${messageSearch}`;
+  }
+  return silentExec(history);
 }
 
 // note: option for later
