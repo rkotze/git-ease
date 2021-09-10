@@ -4,9 +4,11 @@
   import Commit from "./Commit.svelte";
   import { CommandNames } from "../command-names";
   import { writeLinkPatterns } from "./stores/write-link-patterns";
+  import SearchTools from "./SearchTools.svelte";
 
   let log = [];
   let remotes = [];
+
   onMount(() => {
     window.addEventListener("message", listenForMessages);
     return () => window.removeEventListener("message", listenForMessages);
@@ -28,8 +30,11 @@
   }
 </script>
 
-<ul>
-  {#each log as commit}
-    <Commit {commit} {remotes} />
-  {/each}
-</ul>
+<div>
+  <SearchTools />
+  <ul>
+    {#each log as commit}
+      <Commit {commit} {remotes} />
+    {/each}
+  </ul>
+</div>
