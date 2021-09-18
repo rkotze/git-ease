@@ -1,8 +1,10 @@
 <script>
+  import { getContext } from "svelte";
+  import { CommandNames } from "../command-names";
   const vscode = getContext("vscode");
   let searchText = "";
   function search(evt) {
-    evt.stopPropagation();
+    evt.preventDefault();
     vscode.postMessage({
       command: CommandNames.COMMIT_LIST,
       args: [searchText],

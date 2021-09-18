@@ -34,7 +34,7 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
     webviewView.webview.onDidReceiveMessage(async (data) => {
       switch (data.command) {
         case CommandNames.COMMIT_LIST:
-          return gitLog(webviewView);
+          return gitLog(webviewView, data.args[0]);
         case CommandNames.COPY_COMMIT_TO_INPUT:
           return copyCommitToInput(data.args[0]);
         case CommandNames.OPEN_FILE:
