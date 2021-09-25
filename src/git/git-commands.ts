@@ -3,6 +3,7 @@
 
 import { exec, ExecOptionsWithStringEncoding } from "child_process";
 import { promisify } from "util";
+import { workspace } from "vscode";
 import { GitExt } from "../vscode-git-extension/git-ext";
 
 async function silentExec(command: string) {
@@ -11,17 +12,20 @@ async function silentExec(command: string) {
     const response = await execAsync(command, cmdOptions());
 
     return response.stdout;
-  } catch (err) {
-    console.log(`GitEase silentExec: "${command}" ${err.message}`);
-    return "";
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.error(`GitEase silentExec: "${command}" ${err.message}`);
+    }
+    throw err;
   }
 }
 
 function cmdOptions(): ExecOptionsWithStringEncoding {
   const gitExt = new GitExt();
+
   return {
     encoding: "utf8",
-    cwd: gitExt.rootPath || "",
+    cwd: gitExt.rootPath || workspace.workspaceFolders?.[0].uri.fsPath || "",
   };
 }
 
