@@ -33,21 +33,21 @@ function extractCoAuthors(authorString: string): Author | undefined {
   }
 }
 
-function containsTrackedSymbol(item: string): boolean {
-  return "MADRCU".includes(item) && item.length === 1;
-}
-
-const trackedFilePattern = /^([M|A|D|R|C|U])\s+(.*)/;
+const RENAME_CODE = "R085";
+const trackedFilePattern = new RegExp(`^(M|A|D|${RENAME_CODE}|C|U)\\s+(.*)`);
 
 function extractFiles(text: string): TrackedFile | undefined {
   const fileArray = text.match(trackedFilePattern);
-  if (fileArray?.length === 3 && containsTrackedSymbol(fileArray[1])) {
-    const path = fileArray[2];
+  if (fileArray?.length === 3) {
+    let path = fileArray[2];
+    if (fileArray[1] === RENAME_CODE) {
+      path = path.split(/\s/).pop() || "";
+    }
     const splitPath = path.split("/");
     const filename = splitPath.pop() || "";
     const dir = splitPath.join("/");
     return {
-      change: fileArray[1] as TrackedChangeSymbol,
+      change: fileArray[1].charAt(0) as TrackedChangeSymbol,
       path,
       filename,
       dir,

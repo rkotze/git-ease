@@ -72,6 +72,35 @@ describe("Build commit list", () => {
     ]);
   });
 
+  test("commit files handle file rename code R085", () => {
+    expect(list[2].files).toEqual([
+      {
+        path: "src/index.js",
+        change: "M",
+        dir: "src",
+        filename: "index.js",
+      },
+      {
+        path: "src/random/file.ts",
+        change: "A",
+        dir: "src/random",
+        filename: "file.ts",
+      },
+      {
+        path: "src/bla/something.css",
+        change: "D",
+        dir: "src/bla",
+        filename: "something.css",
+      },
+      {
+        path: "src/add-new-coauthor.js",
+        change: "R",
+        dir: "src",
+        filename: "add-new-coauthor.js",
+      },
+    ]);
+  });
+
   test("commits without a branch or tag should have empty array", () => {
     expect(list[2]).toMatchObject({
       branch: [],
@@ -150,6 +179,7 @@ Date:   Sun Jul 21 20:27:06 2019 +0100
     M src/index.js
     A src/random/file.ts
     D src/bla/something.css
+    R085 src/add-coauthor.js  src/add-new-coauthor.js
 
 commit 77c77ee083b60ff88e8c2bf97acb4d4df575d9ff (cjlarose/compute-template-path-using-top-level-dir, compute-template-path-using-top-level-dir)
 Author: Chris LaRose <cjlarose@gmail.com>
