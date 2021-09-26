@@ -2,7 +2,7 @@
 
 ![](https://vsmarketplacebadge.apphb.com/installs/RichardKotze.git-ease.svg) [![](https://vsmarketplacebadge.apphb.com/downloads-short/RichardKotze.git-ease.svg)](https://marketplace.visualstudio.com/items?itemName=RichardKotze.git-ease.svg)
 
-> Improve linking from Git repositories to external sources.
+> Quick and convenient linking from local Git repositories to external sources.
 
 ### Problem
 
@@ -18,26 +18,28 @@ Introduce a convenient and connected interface for viewing the Git log and relat
 1. [Features](#features)
 1. [Settings](#settings)
 
-<img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/116859516-03449f00-abf8-11eb-9d53-a3236db634ef.png" width="350" />
+<img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/134826832-0550c9b5-2fbd-470f-aa76-fef61723e3cc.png" width="350" />
 
 ## Install
 
 Type **"Git-Ease"** in VS Code extensions panel or VS Code marketplace [Git Ease](https://marketplace.visualstudio.com/items?itemName=RichardKotze.git-ease).
 
-~Download the latest `.vsix` file in [releases](https://github.com/rkotze/git-ease/releases) assets.~
-
-~Read my tweet for [manual install instructions](https://twitter.com/richardkotze/status/1351109236189761536?s=20).~
-
 ## Features
 
-- View easy to read Git log
+### Local Git
+
+- Search commit history
+- Convenient commit history view in SCM panel
   - Supports `co-authored-by` meta data
 - Support Git emojis
-- Copy previous commit messages
-- Link to remote repository **issues** (GitHub, enterprise GitHub and Bit Bucket) Example: Scans for #1 and links to issue 1
-- Link to remote repository **commits** (GitHub and enterprise GitHub)
-- Link to project management tools like **Jira** by providing custom Regex patterns. See settings how to setup.
+- Copy any commit message into input
 - List **file changes** for a commit, **open file** and **view file diff**.
+
+### Link to remote repository:
+
+- **Issues** (GitHub, enterprise GitHub and Bit Bucket) Example: Scans for #1 and links to issue 1
+- **Commits** (GitHub and enterprise GitHub)
+- Link to **project** management tools like **Jira** by providing custom Regex patterns. See settings how to setup.
 
 ## Settings
 

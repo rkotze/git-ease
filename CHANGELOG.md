@@ -6,7 +6,21 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## in progress
 
+## 0.6.0
+
+### Added
+
+- Handle file rename in commit history [Issue 17](https://github.com/rkotze/git-ease/issues/17)
+- Search commit history [Issue 15](https://github.com/rkotze/git-ease/issues/15)
+
+### Fixed
+
+- Commit history might not load when first opening VS Code
+- Reload will trigger required functions to generate log
+
 ## 0.5.0
+
+### Added
 
 - Show filename first and remaining path which will trim depending on panel width [Issue 16](https://github.com/rkotze/git-ease/issues/16)
 - Split branch and tags into own boxes [Issue 13](https://github.com/rkotze/git-ease/issues/13)
