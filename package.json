@@ -2,7 +2,7 @@
   "name": "git-ease",
   "displayName": "Git Ease - fancy UI",
   "description": "Improve linking from Git repositories to external sources",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "engines": {
     "vscode": "^1.55.0"
   },
