@@ -1,3 +1,5 @@
+import { trackedFilePattern, extractFiles } from "./extract-files";
+
 function matched(matchedText: string[] | null): string {
   if (Array.isArray(matchedText) && matchedText?.length > 1) {
     return matchedText[1];
@@ -29,28 +31,6 @@ function extractCoAuthors(authorString: string): Author | undefined {
     return {
       name,
       email,
-    };
-  }
-}
-
-const RENAME_CODE = "R085";
-const trackedFilePattern = new RegExp(`^(M|A|D|${RENAME_CODE}|C|U)\\s+(.*)`);
-
-function extractFiles(text: string): TrackedFile | undefined {
-  const fileArray = text.match(trackedFilePattern);
-  if (fileArray?.length === 3) {
-    let path = fileArray[2];
-    if (fileArray[1] === RENAME_CODE) {
-      path = path.split(/\s/).pop() || "";
-    }
-    const splitPath = path.split("/");
-    const filename = splitPath.pop() || "";
-    const dir = splitPath.join("/");
-    return {
-      change: fileArray[1].charAt(0) as TrackedChangeSymbol,
-      path,
-      filename,
-      dir,
     };
   }
 }
