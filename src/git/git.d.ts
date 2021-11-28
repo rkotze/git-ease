@@ -25,8 +25,13 @@ type RemoteInfo = {
 
 type TrackedChangeSymbol = "M" | "A" | "D" | "R" | "C" | "U";
 type TrackedFile = {
-  path: string;
   change: TrackedChangeSymbol;
+  file: FileInfo;
+  originFile?: FileInfo;
+};
+
+type FileInfo = {
   dir: string;
   filename: string;
+  path: string;
 };

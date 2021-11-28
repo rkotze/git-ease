@@ -12,9 +12,11 @@ export function extractFiles(text: string): TrackedFile | undefined {
     const dir = splitPath.join("/");
     return {
       change: fileArray[1].charAt(0) as TrackedChangeSymbol,
-      path,
-      filename,
-      dir,
+      file: {
+        path,
+        filename,
+        dir,
+      },
     };
   }
 }

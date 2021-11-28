@@ -41,16 +41,20 @@ describe("Build commit list", () => {
   test("commit files with no directory", () => {
     expect(list[0].files).toEqual([
       {
-        path: "package-lock.json",
         change: "M",
-        filename: "package-lock.json",
-        dir: "",
+        file: {
+          path: "package-lock.json",
+          filename: "package-lock.json",
+          dir: "",
+        },
       },
       {
-        path: "package.json",
         change: "M",
-        filename: "package.json",
-        dir: "",
+        file: {
+          path: "package.json",
+          filename: "package.json",
+          dir: "",
+        },
       },
     ]);
   });
@@ -58,16 +62,20 @@ describe("Build commit list", () => {
   test("commit files which have a directory", () => {
     expect(list[1].files).toEqual([
       {
-        path: "src/index.js",
         change: "M",
-        dir: "src",
-        filename: "index.js",
+        file: {
+          path: "src/index.js",
+          dir: "src",
+          filename: "index.js",
+        },
       },
       {
-        path: "src/random/file.ts",
         change: "A",
-        dir: "src/random",
-        filename: "file.ts",
+        file: {
+          path: "src/random/file.ts",
+          dir: "src/random",
+          filename: "file.ts",
+        },
       },
     ]);
   });
@@ -75,28 +83,36 @@ describe("Build commit list", () => {
   test("commit files handle file rename code R085", () => {
     expect(list[2].files).toEqual([
       {
-        path: "src/index.js",
         change: "M",
-        dir: "src",
-        filename: "index.js",
+        file: {
+          path: "src/index.js",
+          dir: "src",
+          filename: "index.js",
+        },
       },
       {
-        path: "src/random/file.ts",
         change: "A",
-        dir: "src/random",
-        filename: "file.ts",
+        file: {
+          path: "src/random/file.ts",
+          dir: "src/random",
+          filename: "file.ts",
+        },
       },
       {
-        path: "src/bla/something.css",
         change: "D",
-        dir: "src/bla",
-        filename: "something.css",
+        file: {
+          path: "src/bla/something.css",
+          dir: "src/bla",
+          filename: "something.css",
+        },
       },
       {
-        path: "src/add-new-coauthor.js",
         change: "R",
-        dir: "src",
-        filename: "add-new-coauthor.js",
+        file: {
+          path: "src/add-new-coauthor.js",
+          dir: "src",
+          filename: "add-new-coauthor.js",
+        },
       },
     ]);
   });

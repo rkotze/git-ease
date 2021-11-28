@@ -32,21 +32,22 @@
     <span class="file-box-label">Files:</span>
 
     <ul class="file-list">
-      {#each files as file}
+      {#each files as fileInfo}
         <li
           class="file-list-item"
-          data-file-path={file.path}
+          data-file-path={fileInfo.file.path}
           data-commit-ref={commitRef}
-          title={file.path}
+          title={fileInfo.file.path}
           on:click={openDiff}
         >
-          <span class={`change change-${file.change}`}>{file.change}</span
+          <span class={`change change-${fileInfo.change}`}
+            >{fileInfo.change}</span
           >&nbsp;
-          <span class="filename">{file.filename}</span>
-          <span class="dir">{file.dir}</span>
+          <span class="filename">{fileInfo.file.filename}</span>
+          <span class="dir">{fileInfo.file.dir}</span>
           <span class="open-file"
             ><ButtonIcon
-              data-file-path={file.path}
+              data-file-path={fileInfo.file.path}
               data-commit-ref={commitRef}
               iconName="file-symlink-file"
               title="Open file"
