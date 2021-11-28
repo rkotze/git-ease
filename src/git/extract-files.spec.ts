@@ -22,6 +22,11 @@ describe("Extracting file data", () => {
         dir: "src",
         filename: "add-new-coauthor.js",
       },
+      originFile: {
+        path: "src/add-coauthor.js",
+        dir: "src",
+        filename: "add-coauthor.js",
+      },
     });
 
     expect(extractFiles("R068 src/rand.js  src/chaos.js")).toEqual({
@@ -30,6 +35,11 @@ describe("Extracting file data", () => {
         path: "src/chaos.js",
         dir: "src",
         filename: "chaos.js",
+      },
+      originFile: {
+        path: "src/rand.js",
+        dir: "src",
+        filename: "rand.js",
       },
     });
   });

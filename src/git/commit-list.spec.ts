@@ -113,6 +113,11 @@ describe("Build commit list", () => {
           dir: "src",
           filename: "add-new-coauthor.js",
         },
+        originFile: {
+          path: "src/add-coauthor.js",
+          dir: "src",
+          filename: "add-coauthor.js",
+        },
       },
     ]);
   });
