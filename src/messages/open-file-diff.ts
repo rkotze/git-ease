@@ -4,16 +4,17 @@ import { GitExt } from "../vscode-git-extension/git-ext";
 
 export async function openFileDiff(
   filePath: string,
-  ref: string
+  ref: string,
+  change: TrackedChangeSymbol
 ): Promise<void> {
   const gitExt = new GitExt();
   if (gitExt.rootPath) {
     let commit = await gitExt.selectedRepository?.getCommit(ref);
     let diffUriA = Uri.parse(
-      `${GitEaseDocumentProvider.scheme}:${filePath}?sha=${ref}`
+      `${GitEaseDocumentProvider.scheme}:${filePath}?sha=${ref}&change=${change}&parent=false`
     );
     let diffUriB = Uri.parse(
-      `${GitEaseDocumentProvider.scheme}:${filePath}?sha=${commit?.parents[0]}`
+      `${GitEaseDocumentProvider.scheme}:${filePath}?sha=${commit?.parents[0]}&change=${change}&parent=true`
     );
 
     const fileName = filePath.split("/").pop();

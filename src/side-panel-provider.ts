@@ -40,7 +40,7 @@ export class SidePanelProvider implements vscode.WebviewViewProvider {
         case CommandNames.OPEN_FILE:
           return openFile(data.args[0]);
         case CommandNames.OPEN_FILE_DIFF:
-          return openFileDiff(data.args[0], data.args[1]);
+          return openFileDiff(data.args[0], data.args[1], data.args[2]);
         case CommandNames.PANEL_READY:
           const gitExt = new GitExt();
           gitExt.onRepoChange(function () {

@@ -20,9 +20,10 @@
     evt.stopPropagation();
     const path = evt.currentTarget.dataset.filePath;
     const ref = evt.currentTarget.dataset.commitRef;
+    const change = evt.currentTarget.dataset.change;
     vscode.postMessage({
       command: CommandNames.OPEN_FILE_DIFF,
-      args: [path, ref],
+      args: [path, ref, change],
     });
   }
 </script>
@@ -37,6 +38,7 @@
           class="file-list-item"
           data-file-path={fileInfo.file.path}
           data-commit-ref={commitRef}
+          data-change={fileInfo.change}
           title={fileInfo.file.path}
           on:click={openDiff}
         >
