@@ -19,11 +19,12 @@
   function openDiff(evt) {
     evt.stopPropagation();
     const path = evt.currentTarget.dataset.filePath;
+    const originPath = evt.currentTarget.dataset.originFilePath;
     const ref = evt.currentTarget.dataset.commitRef;
     const change = evt.currentTarget.dataset.change;
     vscode.postMessage({
       command: CommandNames.OPEN_FILE_DIFF,
-      args: [path, ref, change],
+      args: [path, ref, change, originPath],
     });
   }
 </script>
@@ -37,6 +38,7 @@
         <li
           class="file-list-item"
           data-file-path={fileInfo.file.path}
+          data-origin-file-path={fileInfo.originFile?.path}
           data-commit-ref={commitRef}
           data-change={fileInfo.change}
           title={fileInfo.file.path}
@@ -133,5 +135,8 @@
   }
   .change-A {
     background-color: #43a047;
+  }
+  .change-R {
+    background-color: #883381;
   }
 </style>
