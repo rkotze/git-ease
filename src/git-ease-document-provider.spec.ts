@@ -59,4 +59,5 @@ describe("Get file text from Git commit", () => {
     
     return expect(docProvider.provideTextDocumentContent(deletedFile)).resolves.toEqual("");
   });
+
 });
