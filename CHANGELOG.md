@@ -6,6 +6,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## in progress
 
+## 0.7.0
+
+### Added
+
+- Open diff for renamed files [Issue 17](https://github.com/rkotze/git-ease/issues/17)
+  
+### Fixed
+
+- Open diff for added and deleted files [Issue 17](https://github.com/rkotze/git-ease/issues/17)
+
 ## 0.6.0
 
 ### Added

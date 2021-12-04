@@ -2,11 +2,11 @@
 
 ![](https://vsmarketplacebadge.apphb.com/installs/RichardKotze.git-ease.svg) [![](https://vsmarketplacebadge.apphb.com/downloads-short/RichardKotze.git-ease.svg)](https://marketplace.visualstudio.com/items?itemName=RichardKotze.git-ease.svg)
 
-> Quick and convenient linking from local Git repositories to external sources.
+> Quick and convenient linking from local a Git repository to external sources.
 
 ### Problem
 
-I find the current UI features in VS Code too limiting to represent Git features in a convenient way. There is also so many connected documents to Git repos (issues, PRs, etc) which I think can be better linked from VS Code.
+The current UI features in VS Code too limiting to represent Git features in a convenient way. There is also so many connected documents to Git repos (issues, PRs, etc) which I think can be better linked from VS Code.
 
 ### Vision
 
@@ -19,6 +19,8 @@ Introduce a convenient and connected interface for viewing the Git log and relat
 1. [Settings](#settings)
 
 <img title="Preview of Git Ease" src="https://user-images.githubusercontent.com/10452163/134826832-0550c9b5-2fbd-470f-aa76-fef61723e3cc.png" width="350" />
+
+<img title="Open file diff" src="https://user-images.githubusercontent.com/10452163/144715069-68ed9ae2-622d-4869-bfa4-ff5738b0da03.png" width="800" />
 
 ## Install
 
@@ -33,7 +35,7 @@ Type **"Git-Ease"** in VS Code extensions panel or VS Code marketplace [Git Ease
   - Supports `co-authored-by` meta data
 - Support Git emojis
 - Copy any commit message into input
-- List **file changes** for a commit, **open file** and **view file diff**.
+- List **file changes** for a commit, **open file** and **open diff**.
 
 ### Link to remote repository:
 
