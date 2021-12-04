@@ -33,11 +33,20 @@ describe("execute command to open diff", () => {
   });
 
   it("open diff for modified file", async () => {
-    const renameFile = "current/file.js";
-    await openFileDiff(renameFile, "shacurrent", TrackedChangeSymbols.RENAME);
-    expect(Uri.parse).toHaveBeenNthCalledWith(1, expect.stringContaining(renameFile));
-    expect(Uri.parse).toHaveBeenNthCalledWith(2, expect.stringContaining(renameFile));
+    const modifiedFile = "current/file.js";
+    await openFileDiff(modifiedFile, "shacurrent", TrackedChangeSymbols.MODIFIED);
+    expect(Uri.parse).toHaveBeenNthCalledWith(1, expect.stringContaining(modifiedFile));
+    expect(Uri.parse).toHaveBeenNthCalledWith(2, expect.stringContaining(modifiedFile));
     expect(commands.executeCommand).toHaveBeenCalledWith("vscode.diff", expect.anything(), expect.anything(), "file.js (shacurr ⇹ shapare)");
+  });
+
+  it("open diff for renamed file must reference the origin file from parent commit", async () => {
+    const renameFile = "current/renameFile.js";
+    const originFile = "origin/oldFile.js";
+    await openFileDiff(renameFile, "shacurrent", TrackedChangeSymbols.RENAME, originFile);
+    expect(Uri.parse).toHaveBeenNthCalledWith(1, expect.stringContaining(renameFile));
+    expect(Uri.parse).toHaveBeenNthCalledWith(2, expect.stringContaining(originFile));
+    expect(commands.executeCommand).toHaveBeenCalledWith("vscode.diff", expect.anything(), expect.anything(), "renameFile.js - oldFile.js (shacurr ⇹ shapare)");
   });
 
 });
