@@ -96,7 +96,8 @@
     "lint": "eslint src --ext ts",
     "test": "jest",
     "ci": "npm run lint && npm run test",
-    "packvsce": "vsce package"
+    "packvsce": "vsce package",
+    "vsix-publish": "vsce publish"
   },
   "devDependencies": {
     "@primer/octicons": "^16.0.0",
