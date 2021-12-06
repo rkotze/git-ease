@@ -26,7 +26,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
         
-      - name: Set up node 
+      - name: Set up Node 
         uses: actions/setup-node@v1
         
       - name: Install dependencies
