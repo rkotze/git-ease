@@ -4,7 +4,7 @@
   "description": "Improve linking from Git repositories to external sources",
   "version": "0.7.0",
   "engines": {
-    "vscode": "^1.55.0"
+    "vscode": "^1.60.0"
   },
   "publisher": "RichardKotze",
   "preview": true,
