@@ -1,5 +1,4 @@
 import { Uri } from "vscode";
-import { mocked } from "ts-jest/utils";
 import { GitEaseDocumentProvider } from "./git-ease-document-provider";
 import { commitFileText } from "./git/git-commands";
 import { TrackedChangeSymbols } from "./git/tracked-change-symbols";
@@ -7,9 +6,9 @@ import { TrackedChangeSymbols } from "./git/tracked-change-symbols";
 jest.mock("./git/git-commands");
 
 describe("Get file text from Git commit", () => {
-  const mockedCommitFileText = mocked(commitFileText);
+  const mockedCommitFileText = jest.mocked(commitFileText);
   mockedCommitFileText.mockResolvedValue("doc test");
-  const mockedUriParse = mocked(Uri.parse);
+  const mockedUriParse = jest.mocked(Uri.parse);
 
   function buildTestUri(change: string, parent: boolean): Uri {
     mockedUriParse.mockReturnValue({

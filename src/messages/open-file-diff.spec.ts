@@ -1,4 +1,3 @@
-import { mocked } from "ts-jest/utils";
 import { commands, Uri } from "vscode";
 import { TrackedChangeSymbols } from "../git/tracked-change-symbols";
 import { openFileDiff } from "./open-file-diff";
@@ -20,7 +19,7 @@ jest.mock("../vscode-git-extension/git-ext", () => {
   }; 
 });
 describe("execute command to open diff", () => {
-  const mockedUriParse = mocked(Uri.parse);
+  const mockedUriParse = jest.mocked(Uri.parse);
   mockedUriParse.mockReturnValue({
     query: `sha=ske329k2k&change=m&parent=true`,
     path: "/some/file.js",
